@@ -1,22 +1,34 @@
 package com.android.bottomsheet
 
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.Toast
+import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import com.android.example.batikify.R
+import com.android.example.batikify.data.pref.UserModel
+import com.android.example.batikify.factory.AuthViewModelFactory
+import com.android.example.batikify.screen.home.HomeActivity
+import com.android.example.batikify.screen.main.MainViewModel
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.android.material.textfield.TextInputEditText
 
-class ModalSignInBottomSheet : BottomSheetDialogFragment() {
+class ModalSignInBottomSheet: BottomSheetDialogFragment() {
 
+    private val mainViewModel: MainViewModel by viewModels {
+        AuthViewModelFactory.getAuthInstance(requireContext())
+    }
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
         val view = inflater.inflate(R.layout.modal_signin_bottom_sheet_content, container, false)
 
         val emailEditText: TextInputEditText = view.findViewById(R.id.emailEditText)
@@ -49,8 +61,27 @@ class ModalSignInBottomSheet : BottomSheetDialogFragment() {
 
     private fun performSignIn(email: String, password: String) {
         Toast.makeText(context, "Signing in with email: $email", Toast.LENGTH_SHORT).show()
-        dismiss()
+        mainViewModel.login(email,password)
+
+        mainViewModel.loginResult.observe(this){response ->
+            if(response.status == "success"){
+                val uid = response.data?.uid
+                if(uid != null){
+                    val user = UserModel(email = email, token = uid, isLogin = true)
+                    mainViewModel.saveSession(user)
+                    val intent = Intent(requireActivity(), HomeActivity::class.java)
+                    intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+                    startActivity(intent)
+                    requireActivity().finish()
+                }else{
+                    Log.d(TAG,"Uid is null")
+                }
+            }else{
+                Toast.makeText(context, "Error", Toast.LENGTH_SHORT).show()
+            }
+        }
     }
+
 
     companion object {
         const val TAG = "ModalSignInBottomSheet"
