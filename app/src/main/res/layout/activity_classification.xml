@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".screen.classification.ClassificationActivity">
+
+    <com.google.android.material.progressindicator.LinearProgressIndicator
+        android:id="@+id/progressIndicator"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:indeterminate="true"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/previewImageView"
+        android:layout_width="0dp"
+        android:layout_height="420dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:contentDescription="Image Preview"
+        app:layout_constraintBottom_toTopOf="@+id/uploadButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/progressIndicator"
+        app:srcCompat="@drawable/ic_place_holder" />
+
+    <ImageButton
+        android:id="@+id/cameraButton"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/baseline_camera_enhance_24"
+        android:contentDescription="Ambil gambar menggunakan kamera"
+        android:layout_marginTop="28dp"
+        app:layout_constraintBottom_toTopOf="@+id/tvCamera"
+        app:layout_constraintEnd_toStartOf="@+id/galeryButton"
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="@drawable/bg_icon"/>
+
+    <TextView
+        android:id="@+id/tvCamera"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="4dp"
+        android:text="classification"
+        android:textAllCaps="true"
+        android:textSize="10dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/uploadButton"
+        app:layout_constraintEnd_toStartOf="@+id/tvGalery"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageButton
+        android:id="@+id/galeryButton"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@drawable/bg_icon"
+        android:contentDescription="Ambil gambar menggunakan galery"
+        android:src="@drawable/baseline_book_24"
+        android:layout_marginTop="28dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/cameraButton"
+        app:layout_constraintBottom_toTopOf="@+id/tvGalery"/>
+
+    <TextView
+        android:id="@+id/tvGalery"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="4dp"
+        android:text="ensyclopedia"
+        android:textAllCaps="true"
+        android:textSize="10dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tvCamera"
+        app:layout_constraintBottom_toTopOf="@+id/uploadButton" />
+
+    <Button
+        android:id="@+id/uploadButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="100dp"
+        android:text="Analysis"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

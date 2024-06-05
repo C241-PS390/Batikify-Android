@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="16dp"
+    android:backgroundTint="@color/background">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/ivBatikImage"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:scaleType="fitXY"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/sample_batik" />
+
+        <TextView
+            android:id="@+id/tvArticleTitle"
+            android:layout_width="240dp"
+            android:layout_height="wrap_content"
+            android:paddingVertical="4dp"
+            android:paddingStart="16dp"
+            android:text="Batik Megamendung"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/tvArticleDescription"
+            app:layout_constraintTop_toBottomOf="@+id/ivBatikImage" />
+
+        <androidx.constraintlayout.utils.widget.MotionLabel
+            android:id="@+id/tvBatikComeFrom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/outline_label"
+            android:paddingHorizontal="8dp"
+            android:paddingVertical="4dp"
+            android:text="Cirebon"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/tvArticleTitle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tvArticleTitle"
+            app:layout_constraintTop_toBottomOf="@+id/ivBatikImage" />
+
+        <TextView
+            android:id="@+id/tvArticleDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:maxLines="2"
+            android:text="Motif batik Cirebon yang paling terkenal adalah mega mendung. Batik ini memiliki ciri khas yang sangat unik yaitu dengan adanya"
+            android:paddingHorizontal="16dp"
+            android:paddingBottom="12dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvArticleTitle" />
+
+        <TextView
+            android:id="@+id/tvReadMore"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:background="@color/background"
+            android:textStyle="bold"
+            android:textSize="10sp"
+            android:visibility="visible"
+            android:text="... Read More"
+            android:layout_marginBottom="12dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="@+id/tvArticleDescription" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.card.MaterialCardView>
