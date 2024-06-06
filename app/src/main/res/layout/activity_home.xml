@@ -46,11 +46,11 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/tvEnsyclopedia"
+        android:id="@+id/tvEncyclopedia"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="4dp"
-        android:text="ensyclopedia"
+        android:text="Encyclopedia"
         android:textAllCaps="true"
         android:textSize="10dp"
         android:textStyle="bold"
@@ -63,7 +63,7 @@
         android:id="@+id/viewPagerHistory"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/tvEnsyclopedia"
+        app:layout_constraintTop_toBottomOf="@+id/tvEncyclopedia"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"

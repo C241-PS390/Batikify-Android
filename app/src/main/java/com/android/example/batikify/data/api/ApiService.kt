@@ -1,9 +1,11 @@
 package com.android.example.batikify.data.api
 
+import com.android.example.batikify.data.response.EncyclopediaResponse
 import com.android.example.batikify.data.response.LoginResponse
 import com.android.example.batikify.data.response.RegisterResponse
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
+import retrofit2.http.GET
 import retrofit2.http.POST
 
 interface AuthApiService {
@@ -28,4 +30,6 @@ interface AuthApiService {
 
 interface BatikApiService {
 
+    @GET("/encyclopedia")
+    suspend fun getEncyclopedia() : EncyclopediaResponse
 }

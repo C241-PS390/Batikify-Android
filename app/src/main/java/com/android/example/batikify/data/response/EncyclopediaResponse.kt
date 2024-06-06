@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName
 data class EncyclopediaResponse(
 
 	@field:SerializedName("data")
-	val data: List<DataItemEncyclopedia?>? = null,
+	val data: List<DataItemEncyclopedia>? = null,
 
 	@field:SerializedName("message")
 	val message: String? = null,
