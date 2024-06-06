@@ -37,7 +37,7 @@ class MainViewModel(private val authRepository: AuthRepository) : ViewModel() {
                 val response = authRepository.login(email, password)
                 _loginResult.value = response
                 if (response.status == "success") {
-                    val token = response.data?.uid
+                    val token = response.data?.token
                     token?.let {
                         val userModel = UserModel(email, it, true)
                         saveSession(userModel)

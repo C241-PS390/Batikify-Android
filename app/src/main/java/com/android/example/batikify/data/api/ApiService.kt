@@ -14,6 +14,16 @@ interface AuthApiService {
         @Field("email") email: String,
         @Field("password") password: String
     ): LoginResponse
+
+    @FormUrlEncoded
+    @POST("/user/register")
+    suspend fun register(
+        @Field("fullName") fullName : String,
+        @Field("email") email: String,
+        @Field("password") password: String,
+        @Field("passwordConfirmation") passwordConfirmation : String,
+    ): RegisterResponse
+
 }
 
 interface BatikApiService {

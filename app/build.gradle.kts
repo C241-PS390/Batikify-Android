@@ -88,6 +88,9 @@ dependencies {
     // Viewpager
     implementation (libs.androidx.viewpager2)
 
+    // Paging
+    implementation(libs.androidx.paging.runtime.ktx)
+
     // circleimageview
     implementation(libs.circleimageview)
 

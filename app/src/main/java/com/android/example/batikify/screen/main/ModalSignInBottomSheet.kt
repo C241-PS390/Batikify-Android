@@ -65,16 +65,16 @@ class ModalSignInBottomSheet: BottomSheetDialogFragment() {
 
         mainViewModel.loginResult.observe(this){response ->
             if(response.status == "success"){
-                val uid = response.data?.uid
-                if(uid != null){
-                    val user = UserModel(email = email, token = uid, isLogin = true)
+                val token = response.data?.token
+                if(token != null){
+                    val user = UserModel(email = email, token = token, isLogin = true)
                     mainViewModel.saveSession(user)
                     val intent = Intent(requireActivity(), HomeActivity::class.java)
                     intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
                     startActivity(intent)
                     requireActivity().finish()
                 }else{
-                    Log.d(TAG,"Uid is null")
+                    Log.d(TAG,"Token is null")
                 }
             }else{
                 Toast.makeText(context, "Error", Toast.LENGTH_SHORT).show()

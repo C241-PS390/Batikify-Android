@@ -21,8 +21,8 @@ class AuthRepository(
         try {
             val response = authApiService.login(email, password)
             if (response.status == "success") {
-                response.data?.uid?.let { uid ->
-                    userPreference.saveSession(UserModel(email = email, token = uid, isLogin = true))
+                response.data?.token?.let { token ->
+                    userPreference.saveSession(UserModel(email = email, token = token, isLogin = true))
                 } ?: throw Exception("Token is null")
             } else {
                 Log.e(TAG, "Login failed: ${response.message}")
