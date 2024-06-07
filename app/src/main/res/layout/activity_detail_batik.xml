@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".screen.detail.DetailBatikActivity">
+    tools:context=".screen.detail.DetailActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -50,7 +50,7 @@
             app:layout_constraintEnd_toEndOf="parent" />
 
         <TextView
-            android:id="@+id/tv_detail_name"
+            android:id="@+id/tvDetailOrigin"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="asal Cirebon"
@@ -68,7 +68,7 @@
             android:layout_marginTop="8dp"
             android:text="Batik Mega Mendung adalah jenis motif terkenal batik khas Indonesia. Penggambaran mega mendung menunjukkan akulturasi antar budaya dan ornamentasi Tiongkok. Motif Batik Mega Mendung berasal dari Cirebon, Jawa Barat. Yuk, ketahui lebih lanjut mengenai sejarah hingga filosofi jenis batik yang satu ini."
             android:textSize="16sp"
-            app:layout_constraintTop_toBottomOf="@id/tv_detail_name"
+            app:layout_constraintTop_toBottomOf="@id/tvDetailOrigin"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 

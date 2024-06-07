@@ -17,6 +17,7 @@
         <activity android:name=".screen.home.HomeActivity"/>
         <activity android:name=".screen.classification.ClassificationActivity"/>
         <activity android:name=".screen.ensiklopedia.EnsiklopediaActivity"/>
+        <activity android:name=".screen.detail.DetailActivity"/>
         <activity
             android:name=".screen.main.MainActivity"
             android:exported="true">

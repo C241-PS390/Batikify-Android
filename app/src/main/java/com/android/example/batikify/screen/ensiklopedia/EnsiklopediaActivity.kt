@@ -49,7 +49,7 @@ class EnsiklopediaActivity : AppCompatActivity(){
             override fun onItemClick(position: Int) {
                 val ensiklopedia = encyclopediaList[position]
                 val detailPage = Intent(this@EnsiklopediaActivity, DetailActivity::class.java)
-                detailPage.putExtra("STORY_ID", ensiklopedia.id)
+                detailPage.putExtra("BATIK_ID",ensiklopedia.id)
                 startActivity(detailPage)
             }
         })

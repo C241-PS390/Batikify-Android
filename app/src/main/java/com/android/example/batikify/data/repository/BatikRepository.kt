@@ -7,6 +7,7 @@ import androidx.paging.PagingData
 import com.android.example.batikify.data.api.BatikApiService
 import com.android.example.batikify.data.pref.UserPreference
 import com.android.example.batikify.data.response.DataItemEncyclopedia
+import com.android.example.batikify.data.response.DetailResponse
 import com.android.example.batikify.data.response.EncyclopediaResponse
 
 class BatikRepository (
@@ -17,6 +18,9 @@ class BatikRepository (
 
     suspend fun getEncyclopedia() : EncyclopediaResponse{
         return BatikApiService.getEncyclopedia()
+    }
+    suspend fun getEncyclopediaById(id: String) : DetailResponse{
+        return BatikApiService.getEncyclopediaById(id)
     }
     suspend fun logout() {
         userPreference.logout()
