@@ -3,6 +3,7 @@ package com.android.example.batikify.data.api
 import com.android.example.batikify.data.response.DetailResponse
 import com.android.example.batikify.data.response.EncyclopediaResponse
 import com.android.example.batikify.data.response.LoginResponse
+import com.android.example.batikify.data.response.ProfileResponse
 import com.android.example.batikify.data.response.RegisterResponse
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
@@ -32,6 +33,8 @@ interface AuthApiService {
 
 interface BatikApiService {
 
+    @GET("/user")
+    suspend fun getProfile() : ProfileResponse
     @GET("/encyclopedia")
     suspend fun getEncyclopedia() : EncyclopediaResponse
 

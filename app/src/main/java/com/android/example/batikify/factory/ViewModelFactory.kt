@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.android.example.batikify.data.injection.BatikInjection
 import com.android.example.batikify.data.repository.BatikRepository
 import com.android.example.batikify.screen.artikel.ArtikelViewModel
+import com.android.example.batikify.screen.classification.ClassificationViewModel
 import com.android.example.batikify.screen.detail.DetailViewModel
 import com.android.example.batikify.screen.ensiklopedia.EnsiklopediaViewModel
 import com.android.example.batikify.screen.history.HistoryViewModel
@@ -36,6 +37,9 @@ class ViewModelFactory(
             }
             modelClass.isAssignableFrom(DetailViewModel::class.java) -> {
                 DetailViewModel(batikRepository) as T
+            }
+            modelClass.isAssignableFrom(ClassificationViewModel::class.java) -> {
+                ClassificationViewModel(batikRepository) as T
             }
             else -> throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
         }

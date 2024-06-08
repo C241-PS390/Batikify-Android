@@ -14,9 +14,9 @@ class DetailViewModel(private val  batikRepository: BatikRepository) : ViewModel
     companion object{
         private val TAG = "DetailViewModel"
     }
+
     private val _isLoading = MutableLiveData<Boolean>()
-    val isLoading: LiveData<Boolean>
-        get() = _isLoading
+    val isLoading: LiveData<Boolean> = _isLoading
 
     private val _photoUrl = MutableLiveData<String?>()
     val photoUrl : MutableLiveData<String?> = _photoUrl
@@ -42,7 +42,6 @@ class DetailViewModel(private val  batikRepository: BatikRepository) : ViewModel
                     _name.value = encyclopedia?.name
                     _description.value = encyclopedia?.description
 //                    _photoUrl.value = encyclopedia?.photoUrl
-                    Log.d(TAG,"$response")
                 } else {
                     Log.e(TAG, "Error: ${response.message}")
                 }

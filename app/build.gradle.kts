@@ -29,6 +29,7 @@ android {
 
     buildFeatures{
         viewBinding = true
+        buildConfig = true
     }
 
     compileOptions {
@@ -47,7 +48,6 @@ dependencies {
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
     implementation(libs.androidx.constraintlayout)
-    implementation(libs.play.services.maps)
 
     // Testing
     testImplementation(libs.junit)
@@ -69,9 +69,6 @@ dependencies {
     implementation(libs.retrofit)
     implementation(libs.converter.gson)
     implementation(libs.logging.interceptor)
-
-    // DataStore
-    implementation (libs.androidx.datastore.preferences)
 
     // Coroutine
     implementation (libs.kotlinx.coroutines.core)
@@ -96,4 +93,7 @@ dependencies {
 
     // Fragment
     implementation(libs.androidx.fragment.ktx)
+
+    // Classifier
+    implementation(libs.tensorflow.lite.task.vision)
 }

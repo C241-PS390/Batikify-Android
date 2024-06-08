@@ -14,10 +14,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Batikify"
         tools:targetApi="31">
-        <activity android:name=".screen.home.HomeActivity"/>
+        <activity
+            android:name=".screen.home.HomeActivity"
+            android:theme="@style/Theme.Batikify.WithActionBar"
+            />
         <activity android:name=".screen.classification.ClassificationActivity"/>
         <activity android:name=".screen.ensiklopedia.EnsiklopediaActivity"/>
         <activity android:name=".screen.detail.DetailActivity"/>
+        <activity android:name=".screen.profile.ProfileActivity"/>
+        <activity android:name=".screen.classification.CameraActivity"/>
         <activity
             android:name=".screen.main.MainActivity"
             android:exported="true">

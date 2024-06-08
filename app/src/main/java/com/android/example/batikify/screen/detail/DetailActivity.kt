@@ -21,6 +21,7 @@ class DetailActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val id = intent.getStringExtra("BATIK_ID")
+        val name = intent.getStringExtra("BATIK_NAME")
 
         detailViewModel.display(id.toString())
 
