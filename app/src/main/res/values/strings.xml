@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Batikify</string>
     <string name="retry">Refresh</string>
+    <string name="person">profile</string>
 </resources>
