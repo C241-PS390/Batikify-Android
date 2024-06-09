@@ -8,8 +8,10 @@ import com.android.example.batikify.data.api.BatikApiService
 import com.android.example.batikify.data.pref.UserPreference
 import com.android.example.batikify.data.response.DataItemEncyclopedia
 import com.android.example.batikify.data.response.DetailResponse
+import com.android.example.batikify.data.response.DetectionResponse
 import com.android.example.batikify.data.response.EncyclopediaResponse
 import com.android.example.batikify.data.response.ProfileResponse
+import okhttp3.MultipartBody
 
 class BatikRepository (
     private val BatikApiService: BatikApiService,
@@ -20,7 +22,9 @@ class BatikRepository (
     suspend fun getEncyclopedia() : EncyclopediaResponse{
         return BatikApiService.getEncyclopedia()
     }
-
+    suspend fun detectImage(file: MultipartBody.Part) : DetectionResponse{
+        return BatikApiService.detectImage(file)
+    }
     suspend fun getProfile() : ProfileResponse{
         return BatikApiService.getProfile()
     }

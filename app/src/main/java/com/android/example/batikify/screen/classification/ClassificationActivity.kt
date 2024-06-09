@@ -1,6 +1,7 @@
 package com.android.example.batikify.screen.classification
 
 import android.Manifest
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
@@ -16,11 +17,18 @@ import androidx.activity.viewModels
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import com.android.example.batikify.R
 import com.android.example.batikify.databinding.ActivityClassificationBinding
 import com.android.example.batikify.factory.ViewModelFactory
 import com.android.example.batikify.helper.ImageClassifierHelper
 import com.android.example.batikify.screen.Camera.getImageUri
+import com.android.example.batikify.screen.Camera.reduceFileImage
+import com.android.example.batikify.screen.Camera.uriToFile
 import com.android.example.batikify.screen.detail.DetailActivity
+import com.android.example.batikify.screen.main.MainActivity
+import okhttp3.MediaType.Companion.toMediaType
+import okhttp3.MultipartBody
+import okhttp3.RequestBody.Companion.asRequestBody
 import org.tensorflow.lite.task.vision.classifier.Classifications
 
 class ClassificationActivity : AppCompatActivity() {
@@ -104,39 +112,34 @@ class ClassificationActivity : AppCompatActivity() {
         }
     }
 
+    @SuppressLint("NewApi")
     private fun analyzeImage() {
+
         currentImageUri?.let { uri ->
-            val imageClassifierHelper = ImageClassifierHelper(
-                context = this,
-                classifierListener = object : ImageClassifierHelper.ClassifierListener {
-                    override fun onError(error: String) {
-                        showToast(error)
-                    }
+            val imageFile = uriToFile(uri, this).reduceFileImage()
+            Log.d("Image File", "showImage: ${imageFile.path}")
 
-                    override fun onResults(results: List<Classifications>?, inferenceTime: Long) {
-                        results?.let { classificationList ->
-                            if (classificationList.isNotEmpty()) {
-                                val topResult = classificationList[0]
-                                val categories = topResult.categories
-                                if (categories.isNotEmpty()) {
-                                    val topCategory = categories[0]
-                                    val className = topCategory.label
-                                    val confidence = topCategory.score
+            showLoading(true)
 
-                                    moveToResult(className)
-                                    showToast("Class Type: $className, Confidence Score: $confidence")
-                                } else {
-                                    showToast("No categories found")
-                                }
-                            } else {
-                                showToast("No results found")
-                            }
-                        } ?: showToast("Null results")
-                    }
-                }
+            val requestImageFile = imageFile.asRequestBody("image/jpeg".toMediaType())
+            val multipartBody = MultipartBody.Part.createFormData(
+                "photo",
+                imageFile.name,
+                requestImageFile
             )
-            imageClassifierHelper.classifyStaticImage(contentResolver, uri)
-        } ?: showToast("No Image Selected")
+            classificationViewModel.uploadImage(multipartBody)
+
+            classificationViewModel.uploadStatus.observe(this) { isSuccess ->
+                if (isSuccess) {
+                    val intent = Intent(this@ClassificationActivity, MainActivity::class.java)
+                    intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+                    startActivity(intent)
+                    finish()
+                } else {
+                    showToast("Upload failed")
+                }
+            }
+        } ?: showToast(getString(R.string.empty_image_warning))
     }
 
     private fun moveToResult(batikName : String) {

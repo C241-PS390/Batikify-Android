@@ -30,6 +30,7 @@ android {
     buildFeatures{
         viewBinding = true
         buildConfig = true
+        mlModelBinding = true
     }
 
     compileOptions {
@@ -95,5 +96,7 @@ dependencies {
     implementation(libs.androidx.fragment.ktx)
 
     // Classifier
-    implementation(libs.tensorflow.lite.task.vision)
+    implementation (libs.tensorflow.lite)
+    implementation (libs.tensorflow.lite.metadata)
+    implementation (libs.tensorflow.lite.task.vision)
 }
