@@ -36,11 +36,11 @@
             app:layout_constraintBottom_toTopOf="@+id/tvEncyclopediaDescription"
             app:layout_constraintTop_toBottomOf="@+id/ivBatikImage" />
 
-        <TextView
+        <androidx.constraintlayout.utils.widget.MotionLabel
             android:id="@+id/tvBatikComeFrom"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
+            android:layout_marginEnd="4dp"
             android:background="@drawable/outline_label"
             android:paddingHorizontal="8dp"
             android:paddingVertical="4dp"
