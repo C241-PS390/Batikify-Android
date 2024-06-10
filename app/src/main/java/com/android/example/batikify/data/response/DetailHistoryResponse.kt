@@ -2,10 +2,10 @@ package com.android.example.batikify.data.response
 
 import com.google.gson.annotations.SerializedName
 
-data class HistoryResponse(
+data class DetailHistoryResponse(
 
 	@field:SerializedName("data")
-	val data: List<DataItemHistory>? = null,
+	val data: Data? = null,
 
 	@field:SerializedName("message")
 	val message: String? = null,
@@ -14,7 +14,7 @@ data class HistoryResponse(
 	val status: String? = null
 )
 
-data class DataItemHistory(
+data class Data(
 
 	@field:SerializedName("result")
 	val result: String? = null,
@@ -32,8 +32,5 @@ data class DataItemHistory(
 	val imageUrl: String? = null,
 
 	@field:SerializedName("description")
-	val description: String? = null,
-
-	@field:SerializedName("id")
-	val id: String? = null
+	val description: String? = null
 )

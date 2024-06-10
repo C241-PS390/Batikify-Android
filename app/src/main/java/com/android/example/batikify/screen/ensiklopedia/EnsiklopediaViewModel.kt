@@ -31,7 +31,6 @@ class EnsiklopediaViewModel(private val batikRepository: BatikRepository)  : Vie
                 val response = batikRepository.getEncyclopedia()
                 if (response.status == "success" && response.data != null) {
                     _listEncyclopedia.value = response.data!!
-                    Log.d(TAG,"$response")
                 } else {
                     Log.d(TAG, "Response Error: ${response.message}")
                 }

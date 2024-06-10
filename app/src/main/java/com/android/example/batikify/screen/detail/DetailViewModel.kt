@@ -30,7 +30,7 @@ class DetailViewModel(private val  batikRepository: BatikRepository) : ViewModel
     private val _description = MutableLiveData<String?>()
     val description: MutableLiveData<String?> = _description
 
-    fun display(id: String){
+    fun displayById(id: String){
         viewModelScope.launch {
             _isLoading.value = true
             try {
@@ -40,6 +40,27 @@ class DetailViewModel(private val  batikRepository: BatikRepository) : ViewModel
                     val encyclopedia = response.data
                     _origin.value = encyclopedia?.origin
                     _name.value = encyclopedia?.name
+                    _description.value = encyclopedia?.description
+                    _imageUrl.value = encyclopedia?.imageUrl
+                } else {
+                    Log.e(TAG, "Error: ${response.message}")
+                }
+            }catch (e: HttpException){
+
+            }
+        }
+    }
+
+    fun displayByHistory(id: String){
+        viewModelScope.launch {
+            _isLoading.value = true
+            try {
+                val response = batikRepository.getEncyclopediaByHistory(id)
+                _isLoading.value = false
+                if (response.status == "success") {
+                    val encyclopedia = response.data
+                    _origin.value = encyclopedia?.origin
+                    _name.value = encyclopedia?.result
                     _description.value = encyclopedia?.description
                     _imageUrl.value = encyclopedia?.imageUrl
                 } else {

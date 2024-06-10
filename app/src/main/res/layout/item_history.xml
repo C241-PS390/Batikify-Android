@@ -13,7 +13,7 @@
         android:orientation="vertical">
 
         <ImageView
-            android:id="@+id/ivBatikImage"
+            android:id="@+id/ivHistoryImage"
             android:layout_width="match_parent"
             android:layout_height="150dp"
             android:scaleType="fitXY"
@@ -23,7 +23,7 @@
             app:srcCompat="@drawable/sample_batik" />
 
         <TextView
-            android:id="@+id/tvArticleTitle"
+            android:id="@+id/tvHistoryTitle"
             android:layout_width="240dp"
             android:layout_height="wrap_content"
             android:paddingVertical="4dp"
@@ -32,11 +32,11 @@
             android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toTopOf="@+id/tvArticleDescription"
-            app:layout_constraintTop_toBottomOf="@+id/ivBatikImage" />
+            app:layout_constraintBottom_toTopOf="@+id/tvHistoryDescription"
+            app:layout_constraintTop_toBottomOf="@+id/ivHistoryImage" />
 
-        <androidx.constraintlayout.utils.widget.MotionLabel
-            android:id="@+id/tvBatikComeFrom"
+        <TextView
+            android:id="@+id/tvHistoryOrigin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
@@ -46,13 +46,13 @@
             android:text="Cirebon"
             android:textSize="14sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/tvArticleTitle"
+            app:layout_constraintBottom_toBottomOf="@+id/tvHistoryTitle"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/tvArticleTitle"
-            app:layout_constraintTop_toBottomOf="@+id/ivBatikImage" />
+            app:layout_constraintStart_toEndOf="@+id/tvHistoryTitle"
+            app:layout_constraintTop_toBottomOf="@+id/ivHistoryImage" />
 
         <TextView
-            android:id="@+id/tvArticleDescription"
+            android:id="@+id/tvHistoryDescription"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="12sp"
@@ -62,7 +62,7 @@
             android:paddingBottom="12dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvArticleTitle" />
+            app:layout_constraintTop_toBottomOf="@+id/tvHistoryTitle" />
 
         <TextView
             android:id="@+id/tvReadMore"
@@ -76,7 +76,7 @@
             android:text="... Read More"
             android:layout_marginBottom="12dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="@+id/tvArticleDescription" />
+            app:layout_constraintBottom_toBottomOf="@+id/tvHistoryDescription" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>

@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName
 data class NewsResponse(
 
 	@field:SerializedName("data")
-	val data: List<DataItemNews?>? = null,
+	val data: List<DataItemNews>? = null,
 
 	@field:SerializedName("message")
 	val message: String? = null,

@@ -1,10 +1,12 @@
 package com.android.example.batikify.data.api
 
+import com.android.example.batikify.data.response.DetailHistoryResponse
 import com.android.example.batikify.data.response.DetailResponse
 import com.android.example.batikify.data.response.DetectionResponse
 import com.android.example.batikify.data.response.EncyclopediaResponse
 import com.android.example.batikify.data.response.HistoryResponse
 import com.android.example.batikify.data.response.LoginResponse
+import com.android.example.batikify.data.response.NewsResponse
 import com.android.example.batikify.data.response.ProfileResponse
 import com.android.example.batikify.data.response.RegisterResponse
 import okhttp3.MultipartBody
@@ -46,6 +48,11 @@ interface BatikApiService {
     suspend fun getHistory() : HistoryResponse
     @GET("/encyclopedia/{id}")
     suspend fun getEncyclopediaById(@Path("id") id: String): DetailResponse
+    @GET("/detect/histories/{id}")
+    suspend fun getEncyclopediaByHistory(@Path("id") idHistory: String): DetailHistoryResponse
+
+    @GET("/news")
+    suspend fun getNews(): NewsResponse
 
     @Multipart
     @POST("/detect")

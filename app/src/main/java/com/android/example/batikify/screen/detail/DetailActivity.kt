@@ -1,6 +1,7 @@
 package com.android.example.batikify.screen.detail
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -23,9 +24,13 @@ class DetailActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val id = intent.getStringExtra("BATIK_ID")
-        val name = intent.getStringExtra("BATIK_NAME")
+        val historyId = intent.getStringExtra("HISTORY_ID")
 
-        detailViewModel.display(id.toString())
+        if(id != null && historyId == null){
+            detailViewModel.displayById(id.toString())
+        }else if(historyId != null && id == null) {
+            detailViewModel.displayByHistory(historyId.toString())
+        }
 
         setupAction()
 
