@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.android.example.batikify.data.repository.BatikRepository
+import com.android.example.batikify.data.response.DetectionResponse
 import kotlinx.coroutines.launch
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -20,16 +21,20 @@ class ClassificationViewModel(private val batikRepository: BatikRepository) : Vi
 
     val uploadStatus: LiveData<Boolean> get() = _uploadStatus
     private val _uploadStatus = MutableLiveData<Boolean>()
+
+    private val _detectionResponse = MutableLiveData<DetectionResponse>()
+    val detectionResponse: LiveData<DetectionResponse> = _detectionResponse
     fun uploadImage(
         multipartBody: MultipartBody.Part,
     ) {
         viewModelScope.launch {
             _isLoading.value = true
             try {
-                batikRepository.detectImage(multipartBody)
+                val response = batikRepository.detectImage(multipartBody)
                 _isLoading.value = false
                 _uploadStatus.value = true
-                Log.d(TAG,"Berhasil upload Story")
+                _detectionResponse.value = response
+                Log.d(TAG,"Berhasil upload Batik: ${response}")
             } catch (e: HttpException) {
                 val errorBody = e.response()?.errorBody()?.string()
                 errorBody?.let {

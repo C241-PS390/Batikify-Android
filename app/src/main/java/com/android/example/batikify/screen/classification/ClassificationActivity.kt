@@ -7,7 +7,6 @@ import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
-import android.os.PersistableBundle
 import android.util.Log
 import android.view.View
 import android.widget.Toast
@@ -20,16 +19,15 @@ import androidx.core.content.ContextCompat
 import com.android.example.batikify.R
 import com.android.example.batikify.databinding.ActivityClassificationBinding
 import com.android.example.batikify.factory.ViewModelFactory
-import com.android.example.batikify.helper.ImageClassifierHelper
 import com.android.example.batikify.screen.Camera.getImageUri
 import com.android.example.batikify.screen.Camera.reduceFileImage
 import com.android.example.batikify.screen.Camera.uriToFile
 import com.android.example.batikify.screen.detail.DetailActivity
+import com.android.example.batikify.screen.home.HomeActivity
 import com.android.example.batikify.screen.main.MainActivity
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.MultipartBody
 import okhttp3.RequestBody.Companion.asRequestBody
-import org.tensorflow.lite.task.vision.classifier.Classifications
 
 class ClassificationActivity : AppCompatActivity() {
 
@@ -56,6 +54,7 @@ class ClassificationActivity : AppCompatActivity() {
             REQUIRED_PERMISSION
         ) == PackageManager.PERMISSION_GRANTED
 
+    @RequiresApi(Build.VERSION_CODES.Q)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityClassificationBinding.inflate(layoutInflater)
@@ -112,7 +111,8 @@ class ClassificationActivity : AppCompatActivity() {
         }
     }
 
-    @SuppressLint("NewApi")
+
+    @RequiresApi(Build.VERSION_CODES.Q)
     private fun analyzeImage() {
 
         currentImageUri?.let { uri ->
@@ -123,7 +123,7 @@ class ClassificationActivity : AppCompatActivity() {
 
             val requestImageFile = imageFile.asRequestBody("image/jpeg".toMediaType())
             val multipartBody = MultipartBody.Part.createFormData(
-                "photo",
+                "file",
                 imageFile.name,
                 requestImageFile
             )
@@ -131,24 +131,23 @@ class ClassificationActivity : AppCompatActivity() {
 
             classificationViewModel.uploadStatus.observe(this) { isSuccess ->
                 if (isSuccess) {
-                    val intent = Intent(this@ClassificationActivity, MainActivity::class.java)
-                    intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
-                    startActivity(intent)
-                    finish()
+                    classificationViewModel.detectionResponse.observe(this) { response ->
+                        response?.let {
+                            // Handle the detection response
+                            Log.d("Detection Response", "Response: $it")
+                            // Navigate to HomeActivity or handle the response as needed
+                            val intent = Intent(this@ClassificationActivity, HomeActivity::class.java)
+                            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+                            startActivity(intent)
+                            finish()
+                        }
+                    }
                 } else {
                     showToast("Upload failed")
                 }
             }
         } ?: showToast(getString(R.string.empty_image_warning))
     }
-
-    private fun moveToResult(batikName : String) {
-        val intent = Intent(this@ClassificationActivity, DetailActivity::class.java)
-        intent.putExtra("BATIK_NAME",batikName)
-        startActivity(intent)
-    }
-
-
     private fun showLoading(isLoading: Boolean) {
         if (isLoading) {
             binding.progressIndicator.visibility = View.VISIBLE

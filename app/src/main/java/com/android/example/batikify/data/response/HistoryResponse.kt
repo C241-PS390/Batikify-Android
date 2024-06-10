@@ -2,10 +2,10 @@ package com.android.example.batikify.data.response
 
 import com.google.gson.annotations.SerializedName
 
-data class EncyclopediaResponse(
+data class HistoryResponse(
 
 	@field:SerializedName("data")
-	val data: List<DataItemEncyclopedia>? = null,
+	val data: List<DataItemHistory?>? = null,
 
 	@field:SerializedName("message")
 	val message: String? = null,
@@ -14,7 +14,16 @@ data class EncyclopediaResponse(
 	val status: String? = null
 )
 
-data class DataItemEncyclopedia(
+data class DataItemHistory(
+
+	@field:SerializedName("result")
+	val result: String? = null,
+
+	@field:SerializedName("photoUrl")
+	val photoUrl: String? = null,
+
+	@field:SerializedName("createdAt")
+	val createdAt: String? = null,
 
 	@field:SerializedName("origin")
 	val origin: String? = null,
@@ -22,15 +31,9 @@ data class DataItemEncyclopedia(
 	@field:SerializedName("imageUrl")
 	val imageUrl: String? = null,
 
-	@field:SerializedName("name")
-	val name: String? = null,
-
 	@field:SerializedName("description")
 	val description: String? = null,
 
 	@field:SerializedName("id")
-	val id: String? = null,
-
-	@field:SerializedName("slug")
-	val slug: String? = null
+	val id: String? = null
 )

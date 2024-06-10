@@ -18,8 +18,8 @@ class DetailViewModel(private val  batikRepository: BatikRepository) : ViewModel
     private val _isLoading = MutableLiveData<Boolean>()
     val isLoading: LiveData<Boolean> = _isLoading
 
-    private val _photoUrl = MutableLiveData<String?>()
-    val photoUrl : MutableLiveData<String?> = _photoUrl
+    private val _imageUrl = MutableLiveData<String?>()
+    val imageUrl : MutableLiveData<String?> = _imageUrl
 
     private val _name = MutableLiveData<String?>()
     val name: MutableLiveData<String?> = _name
@@ -41,7 +41,7 @@ class DetailViewModel(private val  batikRepository: BatikRepository) : ViewModel
                     _origin.value = encyclopedia?.origin
                     _name.value = encyclopedia?.name
                     _description.value = encyclopedia?.description
-//                    _photoUrl.value = encyclopedia?.photoUrl
+                    _imageUrl.value = encyclopedia?.imageUrl
                 } else {
                     Log.e(TAG, "Error: ${response.message}")
                 }

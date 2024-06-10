@@ -43,7 +43,7 @@ class EncyclopediaAdapter(private var encyclopediaList: List<DataItemEncyclopedi
             binding.tvEncyclopediaDescription.text = encyclopedia.description
             binding.tvBatikComeFrom.text = encyclopedia.origin
             Glide.with(itemView.context)
-                .load(encyclopedia.name)
+                .load(encyclopedia.imageUrl)
                 .placeholder(R.drawable.baseline_downloading_24)
                 .error(R.drawable.baseline_error_24)
                 .into(binding.ivBatikImage)

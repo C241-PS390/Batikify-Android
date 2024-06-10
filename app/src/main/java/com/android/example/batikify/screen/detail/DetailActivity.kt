@@ -4,8 +4,10 @@ import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import com.android.example.batikify.R
 import com.android.example.batikify.databinding.ActivityDetailBatikBinding
 import com.android.example.batikify.factory.ViewModelFactory
+import com.bumptech.glide.Glide
 
 class DetailActivity : AppCompatActivity() {
 
@@ -40,7 +42,7 @@ class DetailActivity : AppCompatActivity() {
         }
 
         detailViewModel.origin.observe(this){origin ->
-            val asal = "asal"
+            val asal = "asal "
             binding.tvDetailOrigin.text = asal + origin
         }
 
@@ -49,12 +51,12 @@ class DetailActivity : AppCompatActivity() {
             binding.tvDescriptionBatik.text = description
         }
 
-//        detailViewModel.photoUrl.observe(this){photoUrl ->
-//            Glide.with(this)
-//                .load(photoUrl)
-//                .error(R.drawable.baseline_error_24)
-//                .into(binding.ivGambarBatik)
-//        }
+        detailViewModel.imageUrl.observe(this){imageUrl ->
+            Glide.with(this)
+                .load(imageUrl)
+                .error(R.drawable.baseline_error_24)
+                .into(binding.ivGambarBatik)
+        }
     }
     private fun showLoading(isLoading: Boolean) {
         if (isLoading) {

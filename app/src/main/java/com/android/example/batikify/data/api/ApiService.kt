@@ -3,6 +3,7 @@ package com.android.example.batikify.data.api
 import com.android.example.batikify.data.response.DetailResponse
 import com.android.example.batikify.data.response.DetectionResponse
 import com.android.example.batikify.data.response.EncyclopediaResponse
+import com.android.example.batikify.data.response.HistoryResponse
 import com.android.example.batikify.data.response.LoginResponse
 import com.android.example.batikify.data.response.ProfileResponse
 import com.android.example.batikify.data.response.RegisterResponse
@@ -41,7 +42,8 @@ interface BatikApiService {
     suspend fun getProfile() : ProfileResponse
     @GET("/encyclopedia")
     suspend fun getEncyclopedia() : EncyclopediaResponse
-
+    @GET("/detect/histories")
+    suspend fun getHistory() : HistoryResponse
     @GET("/encyclopedia/{id}")
     suspend fun getEncyclopediaById(@Path("id") id: String): DetailResponse
 

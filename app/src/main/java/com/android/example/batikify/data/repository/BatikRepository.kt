@@ -10,6 +10,7 @@ import com.android.example.batikify.data.response.DataItemEncyclopedia
 import com.android.example.batikify.data.response.DetailResponse
 import com.android.example.batikify.data.response.DetectionResponse
 import com.android.example.batikify.data.response.EncyclopediaResponse
+import com.android.example.batikify.data.response.HistoryResponse
 import com.android.example.batikify.data.response.ProfileResponse
 import okhttp3.MultipartBody
 
@@ -21,6 +22,10 @@ class BatikRepository (
 
     suspend fun getEncyclopedia() : EncyclopediaResponse{
         return BatikApiService.getEncyclopedia()
+    }
+
+    suspend fun getHistory() : HistoryResponse{
+        return BatikApiService.getHistory()
     }
     suspend fun detectImage(file: MultipartBody.Part) : DetectionResponse{
         return BatikApiService.detectImage(file)
