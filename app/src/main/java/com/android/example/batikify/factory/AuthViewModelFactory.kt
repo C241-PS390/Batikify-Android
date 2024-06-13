@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.android.example.batikify.data.injection.AuthInjection
 import com.android.example.batikify.data.repository.AuthRepository
 import com.android.example.batikify.screen.main.MainViewModel
+import com.android.example.batikify.screen.main.SignUpViewModel
 
 class AuthViewModelFactory(
     private val authRepository: AuthRepository,
@@ -16,6 +17,9 @@ class AuthViewModelFactory(
         return when {
             modelClass.isAssignableFrom(MainViewModel::class.java) -> {
                 MainViewModel(authRepository) as T
+            }
+            modelClass.isAssignableFrom(SignUpViewModel::class.java) -> {
+                SignUpViewModel(authRepository) as T
             }
             else -> throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
         }

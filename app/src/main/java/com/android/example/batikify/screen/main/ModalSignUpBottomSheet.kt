@@ -1,21 +1,115 @@
-package com.android.bottomsheet
+package com.android.example.batikify.screen.main
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.android.example.batikify.R
+import androidx.appcompat.app.AlertDialog
+import androidx.core.content.ContextCompat
+import androidx.fragment.app.viewModels
+import com.android.example.batikify.data.response.ErrorResponse
+import com.android.example.batikify.databinding.ModalSignupBottomSheetContentBinding
+import com.android.example.batikify.factory.AuthViewModelFactory
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
 class ModalSignUpBottomSheet : BottomSheetDialogFragment() {
+    private var binding: ModalSignupBottomSheetContentBinding? = null
+    private val signUpViewModel by viewModels<SignUpViewModel> {
+        AuthViewModelFactory.getAuthInstance(requireContext())
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? = inflater.inflate(R.layout.modal_signup_bottom_sheet_content, container, false)
+    ): View? {
+        binding = ModalSignupBottomSheetContentBinding.inflate(inflater, container, false)
+        return binding?.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        binding?.btnSignUp?.setOnClickListener {
+            val fullName = binding?.nameEditText?.text.toString().trim()
+            val email = binding?.emailEditText?.text.toString().trim()
+            val password = binding?.passwordEditText?.text.toString().trim()
+            val passwordConfirmation = binding?.passwordConfirmationEditText?.text.toString().trim()
+
+            signUpViewModel.register(fullName, email, password, passwordConfirmation)
+            observeViewModel()
+        }
+    }
+
+    private fun observeViewModel() {
+        signUpViewModel.isLoading.observe(viewLifecycleOwner) { isLoading ->
+            showLoading(isLoading)
+        }
+        signUpViewModel.status.observe(viewLifecycleOwner) { status ->
+            status?.let { statusResponse ->
+                handleStatusResponse(statusResponse)
+            }
+        }
+        signUpViewModel.errors.observe(viewLifecycleOwner) { errors ->
+            if (errors.isNotEmpty()) {
+                displayValidationErrors(errors)
+            }
+        }
+    }
+
+    private fun showLoading(isLoading: Boolean) {
+        binding?.btnSignUp?.isEnabled = !isLoading
+        binding?.btnSignUp?.setTextColor(ContextCompat.getColor(requireContext(), android.R.color.white))
+        binding?.btnSignUp?.text = if (isLoading) "memuat..." else "Sign Up"
+    }
+
+    private fun handleStatusResponse(statusResponse: String) {
+        signUpViewModel.message.observe(viewLifecycleOwner) { message ->
+            if (statusResponse == "success") {
+                showAlertDialog("yeah!", message, "lanjut") {
+                    dismiss()
+                }
+            } else {
+                showAlertDialog("waduh", message, "coba lagi!")
+            }
+        }
+    }
+
+    private fun showAlertDialog(title: String, message: String?, buttonText: String, onPositive: (() -> Unit)? = null) {
+        AlertDialog.Builder(requireContext()).apply {
+            setTitle(title)
+            setMessage(message)
+            setPositiveButton(buttonText) { dialog, _ ->
+                onPositive?.invoke()
+                dialog.dismiss()
+            }
+            create()
+            show()
+        }
+    }
+
+    private fun displayValidationErrors(errors: List<ErrorResponse>) {
+        binding?.nameEditText?.error = null
+        binding?.emailEditText?.error = null
+        binding?.passwordEditText?.error = null
+        binding?.passwordConfirmationEditText?.error = null
+
+        errors.forEach { error ->
+            when (error.field) {
+                "fullName" -> binding?.nameEditText?.error = error.message
+                "email" -> binding?.emailEditText?.error = error.message
+                "password" -> binding?.passwordEditText?.error = error.message
+                "passwordConfirmation" -> binding?.passwordConfirmationEditText?.error = error.message
+            }
+        }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        binding = null
+    }
 
     companion object {
-        const val TAG = "ModalSignInBottomSheet"
+        const val TAG = "ModalSignUpBottomSheet"
     }
 }

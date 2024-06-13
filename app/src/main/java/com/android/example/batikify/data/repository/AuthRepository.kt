@@ -5,6 +5,7 @@ import com.android.example.batikify.data.api.AuthApiService
 import com.android.example.batikify.data.pref.UserModel
 import com.android.example.batikify.data.pref.UserPreference
 import com.android.example.batikify.data.response.LoginResponse
+import com.android.example.batikify.data.response.RegisterResponse
 
 class AuthRepository(
     private val userPreference: UserPreference,
@@ -34,7 +35,18 @@ class AuthRepository(
         }
     }
 
-//    suspend fun register(name: String, email: String, password: String): RegisterResponse {
-//        return authApiService.register(name, email, password)
-//    }
+    suspend fun register(
+        fullName: String,
+        email: String,
+        password: String,
+        passwordConfirmation:String
+    ): RegisterResponse {
+        try {
+            val response = authApiService.register(fullName, email, password, passwordConfirmation)
+            return response
+        } catch (e: Exception) {
+            Log.e(TAG, "Sign up error: ${e.message}")
+            throw e
+        }
+    }
 }

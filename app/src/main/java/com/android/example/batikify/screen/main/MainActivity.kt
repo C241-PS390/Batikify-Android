@@ -5,7 +5,6 @@ import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.android.bottomsheet.ModalSignInBottomSheet
-import com.android.bottomsheet.ModalSignUpBottomSheet
 import com.android.example.batikify.R
 import com.android.example.batikify.factory.AuthViewModelFactory
 import com.google.android.material.button.MaterialButton
@@ -29,6 +28,4 @@ class MainActivity : AppCompatActivity() {
             modalSignInBottomSheet.show(supportFragmentManager, ModalSignUpBottomSheet.TAG)
         }
     }
-
-
 }
