@@ -1,6 +1,7 @@
 package com.android.example.batikify.screen.home
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.os.PersistableBundle
 import android.view.Menu
@@ -22,6 +23,7 @@ import com.android.example.batikify.screen.artikel.ArtikelActivity
 import com.android.example.batikify.screen.classification.ClassificationActivity
 import com.android.example.batikify.screen.detail.DetailActivity
 import com.android.example.batikify.screen.ensiklopedia.EnsiklopediaActivity
+import com.android.example.batikify.screen.history.HistoryActivity
 import com.android.example.batikify.screen.main.MainActivity
 import com.android.example.batikify.screen.profile.ProfileActivity
 
@@ -39,22 +41,13 @@ class HomeActivity: AppCompatActivity(){
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        buttonAction()
 
         homeViewModel.getSession().observe(this) { user ->
             if (!user.isLogin) {
                 startActivity(Intent(this@HomeActivity, MainActivity::class.java))
                 finish()
             }
-        }
-
-        binding.classificationButton.setOnClickListener {
-            val intent = Intent(this@HomeActivity,ClassificationActivity::class.java)
-            startActivity(intent)
-        }
-
-        binding.ensyclopeidaButton.setOnClickListener {
-            val intent = Intent(this@HomeActivity,EnsiklopediaActivity::class.java)
-            startActivity(intent)
         }
 
         homeViewModel.listHistory.observe(this){ historyList ->
@@ -97,11 +90,34 @@ class HomeActivity: AppCompatActivity(){
         articleAdapter.setOnItemClickListener(object : ArticleAdapter.OnItemClickListener {
             override fun onItemClick(position: Int) {
                 val article = articleList[position]
-                val detailPage = Intent(this@HomeActivity, ArtikelActivity::class.java)
-//                detailPage.putExtra("BATIK_ID",ensiklopedia.id)
-                startActivity(detailPage)
+                val url = article.link
+                val articleWeb = Intent(Intent.ACTION_VIEW)
+                articleWeb.setData(Uri.parse(url))
+                startActivity(articleWeb)
             }
         })
+    }
+
+    private fun buttonAction(){
+        binding.classificationButton.setOnClickListener {
+            val intent = Intent(this@HomeActivity,ClassificationActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.ensyclopeidaButton.setOnClickListener {
+            val intent = Intent(this@HomeActivity,EnsiklopediaActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.nextHistory.setOnClickListener{
+            val intent = Intent(this@HomeActivity,HistoryActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.nextNews.setOnClickListener{
+            val intent = Intent(this@HomeActivity,ArtikelActivity::class.java)
+            startActivity(intent)
+        }
     }
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.option_menu, menu)

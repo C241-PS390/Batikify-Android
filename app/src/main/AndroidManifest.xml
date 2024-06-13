@@ -23,6 +23,7 @@
         <activity android:name=".screen.detail.DetailActivity"/>
         <activity android:name=".screen.profile.ProfileActivity"/>
         <activity android:name=".screen.classification.CameraActivity"/>
+        <activity android:name=".screen.history.HistoryActivity"/>
         <activity
             android:name=".screen.main.MainActivity"
             android:exported="true">
