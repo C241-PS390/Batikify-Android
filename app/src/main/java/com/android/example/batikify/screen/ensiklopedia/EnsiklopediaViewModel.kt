@@ -41,6 +41,25 @@ class EnsiklopediaViewModel(private val batikRepository: BatikRepository)  : Vie
             }
         }
     }
+
+    fun searchEncyclopedia(name : String){
+        viewModelScope.launch {
+            _isLoading.value = true
+            try {
+                val response = batikRepository.getEncyclopediaByName(name)
+                if (response.status == "success" && response.data != null) {
+                    _listEncyclopedia.value = response.data!!
+                } else {
+                    Log.d(TAG, "Response Error: ${response.message}")
+                }
+            } catch (e: Exception) {
+                Log.d(TAG, "Exception Error", e)
+            } finally {
+                _isLoading.value = false
+            }
+        }
+    }
+
     companion object{
         private val TAG = "EncyclopediaViewModel"
     }

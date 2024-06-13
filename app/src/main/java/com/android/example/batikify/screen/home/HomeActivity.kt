@@ -3,7 +3,6 @@ package com.android.example.batikify.screen.home
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.os.PersistableBundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.activity.viewModels
@@ -12,14 +11,13 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.android.example.batikify.R
 import com.android.example.batikify.adapter.ArticleAdapter
-import com.android.example.batikify.adapter.EncyclopediaAdapter
+import com.android.example.batikify.adapter.ArticleCardAdapter
 import com.android.example.batikify.adapter.HistoryAdapter
-import com.android.example.batikify.data.response.DataItemEncyclopedia
 import com.android.example.batikify.data.response.DataItemHistory
 import com.android.example.batikify.data.response.DataItemNews
 import com.android.example.batikify.databinding.ActivityHomeBinding
 import com.android.example.batikify.factory.ViewModelFactory
-import com.android.example.batikify.screen.artikel.ArtikelActivity
+import com.android.example.batikify.screen.artikel.ArticleNews
 import com.android.example.batikify.screen.classification.ClassificationActivity
 import com.android.example.batikify.screen.detail.DetailActivity
 import com.android.example.batikify.screen.ensiklopedia.EnsiklopediaActivity
@@ -35,7 +33,7 @@ class HomeActivity: AppCompatActivity(){
     }
 
     private lateinit var historyAdapter : HistoryAdapter
-    private lateinit var articleAdapter : ArticleAdapter
+    private lateinit var articleAdapter : ArticleCardAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityHomeBinding.inflate(layoutInflater)
@@ -84,10 +82,10 @@ class HomeActivity: AppCompatActivity(){
         val itemDecoration = DividerItemDecoration(this, layoutManager.orientation)
         binding.rvNews.addItemDecoration(itemDecoration)
 
-        articleAdapter = ArticleAdapter(articleList)
+        articleAdapter = ArticleCardAdapter(articleList)
         binding.rvNews.adapter = articleAdapter
 
-        articleAdapter.setOnItemClickListener(object : ArticleAdapter.OnItemClickListener {
+        articleAdapter.setOnItemClickListener(object : ArticleCardAdapter.OnItemClickListener {
             override fun onItemClick(position: Int) {
                 val article = articleList[position]
                 val url = article.link
@@ -115,7 +113,7 @@ class HomeActivity: AppCompatActivity(){
         }
 
         binding.nextNews.setOnClickListener{
-            val intent = Intent(this@HomeActivity,ArtikelActivity::class.java)
+            val intent = Intent(this@HomeActivity,ArticleNews::class.java)
             startActivity(intent)
         }
     }

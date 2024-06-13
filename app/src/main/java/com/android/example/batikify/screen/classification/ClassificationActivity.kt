@@ -15,6 +15,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.android.example.batikify.R
 import com.android.example.batikify.databinding.ActivityClassificationBinding
@@ -61,7 +62,7 @@ class ClassificationActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         if (!allPermissionsGranted()) {
-            requestPermissionLauncher.launch(REQUIRED_PERMISSION)
+            requestCameraPermission()
         }
 
         classificationViewModel.isLoading.observe(this){
@@ -75,6 +76,13 @@ class ClassificationActivity : AppCompatActivity() {
 
     }
 
+    private fun requestCameraPermission() {
+        if (ActivityCompat.shouldShowRequestPermissionRationale(this, REQUIRED_PERMISSION)) {
+            Toast.makeText(this, "Camera permission is needed to take pictures", Toast.LENGTH_LONG).show()
+        }
+        // Request the permission.
+        requestPermissionLauncher.launch(REQUIRED_PERMISSION)
+    }
     private fun startGallery() {
         launcherGallery.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))
     }

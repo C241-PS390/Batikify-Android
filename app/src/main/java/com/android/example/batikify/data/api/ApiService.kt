@@ -17,6 +17,7 @@ import retrofit2.http.Multipart
 import retrofit2.http.POST
 import retrofit2.http.Part
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface AuthApiService {
 
@@ -50,7 +51,8 @@ interface BatikApiService {
     suspend fun getEncyclopediaById(@Path("id") id: String): DetailResponse
     @GET("/detect/histories/{id}")
     suspend fun getEncyclopediaByHistory(@Path("id") idHistory: String): DetailHistoryResponse
-
+    @GET("/encyclopedia")
+    suspend fun getEncyclopediaByName(@Query("search")name : String) : EncyclopediaResponse
     @GET("/news")
     suspend fun getNews(): NewsResponse
 

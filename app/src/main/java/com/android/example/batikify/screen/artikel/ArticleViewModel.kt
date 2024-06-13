@@ -1,4 +1,4 @@
-package com.android.example.batikify.screen.history
+package com.android.example.batikify.screen.artikel
 
 import android.util.Log
 import androidx.lifecycle.LiveData
@@ -6,28 +6,28 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.android.example.batikify.data.repository.BatikRepository
-import com.android.example.batikify.data.response.DataItemHistory
+import com.android.example.batikify.data.response.DataItemNews
 import kotlinx.coroutines.launch
 
-class HistoryViewModel(private val batikRepository: BatikRepository) : ViewModel() {
+class ArticleViewModel(private val batikRepository: BatikRepository): ViewModel() {
 
-    private var _listHistory = MutableLiveData<List<DataItemHistory>>()
-    val listHistory: LiveData<List<DataItemHistory>> = _listHistory
+    private var _listNews = MutableLiveData<List<DataItemNews>>()
+    val listNews: LiveData<List<DataItemNews>> = _listNews
 
     private var _isLoading = MutableLiveData<Boolean>()
     val isLoading: LiveData<Boolean> = _isLoading
 
     init {
-        getHistory()
+        getNews()
     }
 
-    fun getHistory() {
+    fun getNews() {
         viewModelScope.launch {
             _isLoading.value = true
             try {
-                val response = batikRepository.getHistory()
+                val response = batikRepository.getNews()
                 if (response.status == "success" && response.data != null) {
-                    _listHistory.value = response.data!!
+                    _listNews.value = response.data!!
                     Log.d(TAG,"$response")
                 } else {
                     Log.d(TAG, "Response Error: ${response.message}")
@@ -40,6 +40,6 @@ class HistoryViewModel(private val batikRepository: BatikRepository) : ViewModel
         }
     }
     companion object{
-        private val TAG = "HistoryViewModel"
+        private val TAG = "ArticleViewModel"
     }
 }

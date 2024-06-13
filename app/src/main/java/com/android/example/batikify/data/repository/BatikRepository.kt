@@ -40,6 +40,9 @@ class BatikRepository (
     suspend fun getEncyclopediaByHistory(idHistory : String): DetailHistoryResponse{
         return BatikApiService.getEncyclopediaByHistory(idHistory)
     }
+    suspend fun getEncyclopediaByName(name : String) : EncyclopediaResponse{
+        return BatikApiService.getEncyclopediaByName(name)
+    }
     suspend fun getNews(): NewsResponse{
         return BatikApiService.getNews()
     }

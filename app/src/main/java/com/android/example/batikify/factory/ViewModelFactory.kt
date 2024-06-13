@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.android.example.batikify.data.injection.BatikInjection
 import com.android.example.batikify.data.repository.BatikRepository
-import com.android.example.batikify.screen.artikel.ArtikelViewModel
+import com.android.example.batikify.screen.artikel.ArticleViewModel
 import com.android.example.batikify.screen.classification.ClassificationViewModel
 import com.android.example.batikify.screen.detail.DetailViewModel
 import com.android.example.batikify.screen.ensiklopedia.EnsiklopediaViewModel
@@ -26,8 +26,8 @@ class ViewModelFactory(
             modelClass.isAssignableFrom(EnsiklopediaViewModel::class.java) -> {
                 EnsiklopediaViewModel(batikRepository) as T
             }
-            modelClass.isAssignableFrom(ArtikelViewModel::class.java) -> {
-                ArtikelViewModel(batikRepository) as T
+            modelClass.isAssignableFrom(ArticleViewModel::class.java) -> {
+                ArticleViewModel(batikRepository) as T
             }
             modelClass.isAssignableFrom(ProfileViewModel::class.java) -> {
                 ProfileViewModel(batikRepository) as T

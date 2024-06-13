@@ -8,10 +8,9 @@ import com.android.example.batikify.data.response.DataItemHistory
 import com.android.example.batikify.data.response.DataItemNews
 import com.android.example.batikify.databinding.ItemArticleSliderBinding
 import com.android.example.batikify.databinding.ItemHistoryBinding
-import com.android.example.batikify.databinding.ItemNewsCardBinding
 import com.bumptech.glide.Glide
 
-class ArticleAdapter(private var articleList: List<DataItemNews>) : RecyclerView.Adapter<ArticleAdapter.ArticleViewHolder>() {
+class ArticleCardAdapter(private var articleList: List<DataItemNews>) : RecyclerView.Adapter<ArticleCardAdapter.ArticleViewHolder>() {
 
     private var onItemClickListener: OnItemClickListener? = null
 
@@ -24,7 +23,7 @@ class ArticleAdapter(private var articleList: List<DataItemNews>) : RecyclerView
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ArticleViewHolder {
-        val binding = ItemNewsCardBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding = ItemArticleSliderBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ArticleViewHolder(binding)
     }
 
@@ -40,7 +39,7 @@ class ArticleAdapter(private var articleList: List<DataItemNews>) : RecyclerView
         return articleList.size
     }
 
-    class ArticleViewHolder(private val binding: ItemNewsCardBinding) : RecyclerView.ViewHolder(binding.root) {
+    class ArticleViewHolder(private val binding: ItemArticleSliderBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(article: DataItemNews) {
             binding.tvArticleTitle.text = article.title
             binding.tvArticleDescription.text = article.snippet

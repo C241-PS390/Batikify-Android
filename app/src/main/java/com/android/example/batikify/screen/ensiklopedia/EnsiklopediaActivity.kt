@@ -40,6 +40,18 @@ class EnsiklopediaActivity : AppCompatActivity(){
         ensiklopediaViewModel.isLoading.observe(this){
             showLoading(it)
         }
+
+        with(binding) {
+            searchView.setupWithSearchBar(searchBar)
+            searchView
+                .editText
+                .setOnEditorActionListener { textView, actionId, event ->
+                    searchBar.hint = searchView.text
+                    searchView.hide()
+                    ensiklopediaViewModel.searchEncyclopedia(searchView.text.toString())
+                    false
+                }
+        }
     }
     private fun showEncyclopediaList(encyclopediaList : List<DataItemEncyclopedia>) {
         ensiklopediaAdapter = EncyclopediaAdapter(encyclopediaList)

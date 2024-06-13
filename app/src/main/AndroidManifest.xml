@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.CAMERA"/>
 
     <application
         android:allowBackup="true"
@@ -19,11 +20,18 @@
             android:theme="@style/Theme.Batikify.WithActionBar"
             />
         <activity android:name=".screen.classification.ClassificationActivity"/>
-        <activity android:name=".screen.ensiklopedia.EnsiklopediaActivity"/>
+        <activity
+            android:name=".screen.ensiklopedia.EnsiklopediaActivity"
+            android:theme="@style/Theme.Batikify.WithActionBar"/>
         <activity android:name=".screen.detail.DetailActivity"/>
         <activity android:name=".screen.profile.ProfileActivity"/>
         <activity android:name=".screen.classification.CameraActivity"/>
-        <activity android:name=".screen.history.HistoryActivity"/>
+        <activity
+            android:name=".screen.history.HistoryActivity"
+            android:theme="@style/Theme.Batikify.WithActionBar"/>
+        <activity
+            android:name=".screen.artikel.ArticleNews"
+            android:theme="@style/Theme.Batikify.WithActionBar"/>
         <activity
             android:name=".screen.main.MainActivity"
             android:exported="true">

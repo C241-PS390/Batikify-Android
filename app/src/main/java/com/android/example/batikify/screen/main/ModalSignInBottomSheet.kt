@@ -63,7 +63,7 @@ class ModalSignInBottomSheet: BottomSheetDialogFragment() {
         Toast.makeText(context, "Signing in with email: $email", Toast.LENGTH_SHORT).show()
         mainViewModel.login(email,password)
 
-        mainViewModel.loginResult.observe(this){response ->
+        mainViewModel.loginResult.observeForever{response ->
             if(response.status == "success"){
                 val token = response.data?.token
                 if(token != null){
