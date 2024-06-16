@@ -5,6 +5,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -32,6 +33,7 @@ class HomeActivity: AppCompatActivity(){
 
     private lateinit var historyAdapter : HistoryAdapter
     private lateinit var articleAdapter : ArticleCardAdapter
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityHomeBinding.inflate(layoutInflater)
@@ -46,17 +48,25 @@ class HomeActivity: AppCompatActivity(){
             }
         }
 
-        homeViewModel.listHistory.observe(this){ historyList ->
+        homeViewModel.listHistory.observe(this) { historyList ->
             showHistoryList(historyList)
         }
 
-        homeViewModel.listNews.observe(this){ articleList ->
+        homeViewModel.listNews.observe(this) { articleList ->
             showArticleList(articleList)
+        }
+
+        homeViewModel.isLoadingHistory.observe(this) { isLoading ->
+            showLoading(binding.progressBarHistory, isLoading)
+        }
+
+        homeViewModel.isLoadingArticle.observe(this) { isLoading ->
+            showLoading(binding.progressBarArticle, isLoading)
         }
     }
 
     private fun showHistoryList(historyList: List<DataItemHistory>?) {
-        val layoutManager = LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false)
+        val layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         binding.rvHistory.layoutManager = layoutManager
 
         historyAdapter = HistoryAdapter(historyList)
@@ -73,7 +83,7 @@ class HomeActivity: AppCompatActivity(){
     }
 
     private fun showArticleList(articleList: List<DataItemNews>?) {
-        val layoutManager = LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false)
+        val layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         binding.rvNews.layoutManager = layoutManager
 
         articleAdapter = ArticleCardAdapter(articleList)
@@ -90,27 +100,32 @@ class HomeActivity: AppCompatActivity(){
         })
     }
 
-    private fun buttonAction(){
+    private fun buttonAction() {
         binding.classificationButton.setOnClickListener {
-            val intent = Intent(this@HomeActivity,ClassificationActivity::class.java)
+            val intent = Intent(this@HomeActivity, ClassificationActivity::class.java)
             startActivity(intent)
         }
 
         binding.ensyclopeidaButton.setOnClickListener {
-            val intent = Intent(this@HomeActivity,EnsiklopediaActivity::class.java)
+            val intent = Intent(this@HomeActivity, EnsiklopediaActivity::class.java)
             startActivity(intent)
         }
 
-        binding.nextHistory.setOnClickListener{
-            val intent = Intent(this@HomeActivity,HistoryActivity::class.java)
+        binding.nextHistory.setOnClickListener {
+            val intent = Intent(this@HomeActivity, HistoryActivity::class.java)
             startActivity(intent)
         }
 
-        binding.nextNews.setOnClickListener{
-            val intent = Intent(this@HomeActivity,ArticleNews::class.java)
+        binding.nextNews.setOnClickListener {
+            val intent = Intent(this@HomeActivity, ArticleNews::class.java)
             startActivity(intent)
         }
     }
+
+    private fun showLoading(view: View, isLoading: Boolean) {
+        view.visibility = if (isLoading) View.VISIBLE else View.GONE
+    }
+
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.option_menu, menu)
         return true
@@ -119,7 +134,7 @@ class HomeActivity: AppCompatActivity(){
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.action_profile -> {
-                val profilePage =  Intent(this@HomeActivity,ProfileActivity::class.java)
+                val profilePage = Intent(this@HomeActivity, ProfileActivity::class.java)
                 startActivity(profilePage)
                 return true
             }

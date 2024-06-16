@@ -20,8 +20,11 @@ class HomeViewModel(private val batikRepository: BatikRepository) : ViewModel() 
     private var _listNews = MutableLiveData<List<DataItemNews>?>()
     val listNews: LiveData<List<DataItemNews>?> = _listNews
 
-    private var _isLoading = MutableLiveData<Boolean>()
-    val isLoading: LiveData<Boolean> = _isLoading
+    private var _isLoadingHistory = MutableLiveData<Boolean>()
+    val isLoadingHistory: LiveData<Boolean> = _isLoadingHistory
+
+    private var _isLoadingArticle = MutableLiveData<Boolean>()
+    val isLoadingArticle: LiveData<Boolean> = _isLoadingArticle
 
     fun getSession(): LiveData<UserModel> {
         return batikRepository.getSession().asLiveData()
@@ -34,7 +37,7 @@ class HomeViewModel(private val batikRepository: BatikRepository) : ViewModel() 
 
     fun getHistory() {
         viewModelScope.launch {
-            _isLoading.value = true
+            _isLoadingHistory.value = true
             try {
                 val response = batikRepository.getHistory()
                 if (response.status == "success" && response.data != null) {
@@ -46,14 +49,14 @@ class HomeViewModel(private val batikRepository: BatikRepository) : ViewModel() 
             } catch (e: Exception) {
                 Log.d(TAG, "Exception Error", e)
             } finally {
-                _isLoading.value = false
+                _isLoadingHistory.value = false
             }
         }
     }
 
     fun getNews(){
         viewModelScope.launch {
-            _isLoading.value = true
+            _isLoadingArticle.value = true
             try {
                 val response = batikRepository.getNews()
                 if (response.status == "success" && response.data != null) {
@@ -65,7 +68,7 @@ class HomeViewModel(private val batikRepository: BatikRepository) : ViewModel() 
             } catch (e: Exception) {
                 Log.d(TAG, "Exception Error", e)
             } finally {
-                _isLoading.value = false
+                _isLoadingArticle.value = false
             }
         }
     }
