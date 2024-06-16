@@ -62,7 +62,6 @@ object Camera{
             "${BuildConfig.APPLICATION_ID}.fileprovider",
             imageFile
         )
-        //content://com.dicoding.picodiploma.mycamera.fileprovider/my_images/MyCamera/20230825_133659.jpg
     }
 
     fun createCustomTempFile(context: Context): File {
@@ -113,7 +112,7 @@ object Camera{
         }
     }
 
-    fun rotateImage(source: Bitmap, angle: Float): Bitmap? {
+    fun rotateImage(source: Bitmap, angle: Float): Bitmap {
         val matrix = Matrix()
         matrix.postRotate(angle)
         return Bitmap.createBitmap(

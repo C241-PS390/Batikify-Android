@@ -8,7 +8,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.Toast
-import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import com.android.example.batikify.R
 import com.android.example.batikify.data.pref.UserModel
@@ -81,7 +80,6 @@ class ModalSignInBottomSheet: BottomSheetDialogFragment() {
             }
         }
     }
-
 
     companion object {
         const val TAG = "ModalSignInBottomSheet"

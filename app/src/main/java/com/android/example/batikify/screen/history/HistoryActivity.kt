@@ -5,13 +5,9 @@ import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.android.example.batikify.adapter.EncyclopediaAdapter
 import com.android.example.batikify.adapter.HistoryAdapter
-import com.android.example.batikify.data.response.DataItemEncyclopedia
 import com.android.example.batikify.data.response.DataItemHistory
-import com.android.example.batikify.databinding.ActivityEncyclopediaBinding
 import com.android.example.batikify.databinding.ActivityHistoryBinding
 import com.android.example.batikify.factory.ViewModelFactory
 import com.android.example.batikify.screen.detail.DetailActivity
@@ -32,8 +28,6 @@ class HistoryActivity:  AppCompatActivity() {
 
         val layoutManager = LinearLayoutManager(this)
         binding.rvHistory.layoutManager = layoutManager
-        val itemDecoration = DividerItemDecoration(this, layoutManager.orientation)
-        binding.rvHistory.addItemDecoration(itemDecoration)
 
         historyViewModel.listHistory.observe(this){ historyList ->
             showHistoryList(historyList)
@@ -58,10 +52,6 @@ class HistoryActivity:  AppCompatActivity() {
     }
 
     private fun showLoading(isLoading: Boolean) {
-        if (isLoading) {
-            binding.progressBar.visibility = View.VISIBLE
-        } else {
-            binding.progressBar.visibility = View.GONE
-        }
+        binding.progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
     }
 }

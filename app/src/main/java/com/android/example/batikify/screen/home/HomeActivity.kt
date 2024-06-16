@@ -7,10 +7,8 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.android.example.batikify.R
-import com.android.example.batikify.adapter.ArticleAdapter
 import com.android.example.batikify.adapter.ArticleCardAdapter
 import com.android.example.batikify.adapter.HistoryAdapter
 import com.android.example.batikify.data.response.DataItemHistory
@@ -60,8 +58,6 @@ class HomeActivity: AppCompatActivity(){
     private fun showHistoryList(historyList : List<DataItemHistory>) {
         val layoutManager = LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false)
         binding.rvHistory.layoutManager = layoutManager
-        val itemDecoration = DividerItemDecoration(this, layoutManager.orientation)
-        binding.rvHistory.addItemDecoration(itemDecoration)
 
         historyAdapter = HistoryAdapter(historyList)
         binding.rvHistory.adapter = historyAdapter
@@ -79,8 +75,6 @@ class HomeActivity: AppCompatActivity(){
     private fun showArticleList(articleList : List<DataItemNews>) {
         val layoutManager = LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false)
         binding.rvNews.layoutManager = layoutManager
-        val itemDecoration = DividerItemDecoration(this, layoutManager.orientation)
-        binding.rvNews.addItemDecoration(itemDecoration)
 
         articleAdapter = ArticleCardAdapter(articleList)
         binding.rvNews.adapter = articleAdapter

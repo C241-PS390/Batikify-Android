@@ -1,7 +1,6 @@
 package com.android.example.batikify.screen.detail
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -60,15 +59,11 @@ class DetailActivity : AppCompatActivity() {
             Glide.with(this)
                 .load(imageUrl)
                 .error(R.drawable.baseline_error_24)
-                .into(binding.ivGambarBatik)
+                .into(binding.ivImageBatik)
         }
     }
     private fun showLoading(isLoading: Boolean) {
-        if (isLoading) {
-            binding.progressBar.visibility = View.VISIBLE
-        } else {
-            binding.progressBar.visibility = View.GONE
-        }
+        binding.progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
     }
 
     companion object{

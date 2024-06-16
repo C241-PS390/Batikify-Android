@@ -21,7 +21,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/sample_batik" />
+            app:srcCompat="@drawable/sample_batik"
+            android:contentDescription="@string/cd_ivImageBatik"/>
 
         <TextView
             android:id="@+id/tvEncyclopediaTitle"
@@ -29,7 +30,8 @@
             android:layout_height="wrap_content"
             android:paddingVertical="4dp"
             android:paddingStart="16dp"
-            android:text="Batik Megamendung"
+            android:paddingEnd="0dp"
+            android:text="@string/name_motif_sample"
             android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
@@ -44,7 +46,7 @@
             android:background="@drawable/outline_label"
             android:paddingHorizontal="8dp"
             android:paddingVertical="4dp"
-            android:text="Cirebon"
+            android:text="@string/origin_sample"
             android:textSize="14sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/tvEncyclopediaTitle"
@@ -58,26 +60,12 @@
             android:layout_height="wrap_content"
             android:textSize="12sp"
             android:maxLines="2"
-            android:text="Motif batik Cirebon yang paling terkenal adalah mega mendung. Batik ini memiliki ciri khas yang sangat unik yaitu dengan adanya"
+            android:text="@string/description_batik_sample"
             android:paddingHorizontal="16dp"
             android:paddingBottom="12dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvEncyclopediaTitle" />
-
-        <TextView
-            android:id="@+id/tvReadMore"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:background="@color/background"
-            android:textStyle="bold"
-            android:textSize="10sp"
-            android:visibility="visible"
-            android:text="... Read More"
-            android:layout_marginBottom="12dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="@+id/tvEncyclopediaDescription" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>

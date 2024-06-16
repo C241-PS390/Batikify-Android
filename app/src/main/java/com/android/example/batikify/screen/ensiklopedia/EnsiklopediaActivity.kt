@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.android.example.batikify.adapter.EncyclopediaAdapter
 
@@ -30,8 +29,6 @@ class EnsiklopediaActivity : AppCompatActivity(){
 
         val layoutManager = LinearLayoutManager(this)
         binding.rvEncyclopedia.layoutManager = layoutManager
-        val itemDecoration = DividerItemDecoration(this, layoutManager.orientation)
-        binding.rvEncyclopedia.addItemDecoration(itemDecoration)
 
         ensiklopediaViewModel.listEncyclopedia.observe(this){ encyclopediaList ->
             showEncyclopediaList(encyclopediaList)
@@ -68,10 +65,6 @@ class EnsiklopediaActivity : AppCompatActivity(){
     }
 
     private fun showLoading(isLoading: Boolean) {
-        if (isLoading) {
-            binding.progressBar.visibility = View.VISIBLE
-        } else {
-            binding.progressBar.visibility = View.GONE
-        }
+        binding.progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
     }
 }

@@ -25,7 +25,7 @@
             tools:visibility="visible" />
 
         <ImageView
-            android:id="@+id/ivGambarBatik"
+            android:id="@+id/ivImageBatik"
             android:layout_width="300dp"
             android:layout_height="360dp"
             android:scaleType="centerCrop"
@@ -33,7 +33,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:contentDescription="gambar batik"
+            android:contentDescription="@string/cd_ivImageBatik"
             android:background="@drawable/rounded_corner" />
 
         <TextView
@@ -41,11 +41,11 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="Batik Megamendung"
+            android:text="@string/name_motif_sample"
             android:textAlignment="center"
             android:textSize="24sp"
             android:textStyle="bold"
-            app:layout_constraintTop_toBottomOf="@id/ivGambarBatik"
+            app:layout_constraintTop_toBottomOf="@id/ivImageBatik"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 
@@ -53,7 +53,7 @@
             android:id="@+id/tvDetailOrigin"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="asal Cirebon"
+            android:text="@string/origin_sample"
             android:textAlignment="center"
             android:textSize="20sp"
             android:textStyle="bold"
@@ -66,7 +66,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="Batik Mega Mendung adalah jenis motif terkenal batik khas Indonesia. Penggambaran mega mendung menunjukkan akulturasi antar budaya dan ornamentasi Tiongkok. Motif Batik Mega Mendung berasal dari Cirebon, Jawa Barat. Yuk, ketahui lebih lanjut mengenai sejarah hingga filosofi jenis batik yang satu ini."
+            android:text="@string/description_batik_sample"
             android:textSize="16sp"
             app:layout_constraintTop_toBottomOf="@id/tvDetailOrigin"
             app:layout_constraintStart_toStartOf="parent"

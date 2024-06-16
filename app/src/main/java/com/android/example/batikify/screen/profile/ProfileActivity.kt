@@ -5,10 +5,8 @@ import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import com.android.example.batikify.databinding.ActivityDetailBatikBinding
 import com.android.example.batikify.databinding.ActivityProfileBinding
 import com.android.example.batikify.factory.ViewModelFactory
-import com.android.example.batikify.screen.detail.DetailViewModel
 import com.android.example.batikify.screen.home.HomeActivity
 import com.android.example.batikify.screen.main.MainActivity
 
@@ -56,10 +54,6 @@ class ProfileActivity : AppCompatActivity(){
     }
 
     private fun showLoading(isLoading: Boolean) {
-        if (isLoading) {
-            binding.progressBar.visibility = View.VISIBLE
-        } else {
-            binding.progressBar.visibility = View.GONE
-        }
+        binding.progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
     }
 }
