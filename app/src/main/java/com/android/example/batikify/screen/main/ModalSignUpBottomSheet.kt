@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
+import com.android.example.batikify.R
 import com.android.example.batikify.data.response.ErrorResponse
 import com.android.example.batikify.databinding.ModalSignupBottomSheetContentBinding
 import com.android.example.batikify.factory.AuthViewModelFactory
@@ -60,17 +61,15 @@ class ModalSignUpBottomSheet : BottomSheetDialogFragment() {
     private fun showLoading(isLoading: Boolean) {
         binding?.btnSignUp?.isEnabled = !isLoading
         binding?.btnSignUp?.setTextColor(ContextCompat.getColor(requireContext(), android.R.color.white))
-        binding?.btnSignUp?.text = if (isLoading) "memuat..." else "Sign Up"
+        binding?.btnSignUp?.text = if (isLoading) getString(R.string.loading) else getString(R.string.sign_up)
     }
 
     private fun handleStatusResponse(statusResponse: String) {
         signUpViewModel.message.observe(viewLifecycleOwner) { message ->
-            if (statusResponse == "success") {
-                showAlertDialog("yeah!", message, "lanjut") {
+            if (statusResponse == getString(R.string.success)) {
+                showAlertDialog(getString(R.string.yeah), message, getString(R.string.next)) {
                     dismiss()
                 }
-            } else {
-                showAlertDialog("waduh", message, "coba lagi!")
             }
         }
     }
@@ -89,17 +88,17 @@ class ModalSignUpBottomSheet : BottomSheetDialogFragment() {
     }
 
     private fun displayValidationErrors(errors: List<ErrorResponse>) {
-        binding?.nameEditText?.error = null
-        binding?.emailEditText?.error = null
-        binding?.passwordEditText?.error = null
-        binding?.passwordConfirmationEditText?.error = null
+        binding?.nameInputLayout?.error = null
+        binding?.emailInputLayout?.error = null
+        binding?.passwordInputLayout?.error = null
+        binding?.passwordConfirmationInputLayout?.error = null
 
         errors.forEach { error ->
             when (error.field) {
-                "fullName" -> binding?.nameEditText?.error = error.message
-                "email" -> binding?.emailEditText?.error = error.message
-                "password" -> binding?.passwordEditText?.error = error.message
-                "passwordConfirmation" -> binding?.passwordConfirmationEditText?.error = error.message
+                getString(R.string.response_fullname) -> binding?.nameInputLayout?.error = error.message
+                getString(R.string.response_email) -> binding?.emailInputLayout?.error = error.message
+                getString(R.string.response_password) -> binding?.passwordInputLayout?.error = error.message
+                getString(R.string.response_passwordconfirmation) -> binding?.passwordConfirmationInputLayout?.error = error.message
             }
         }
     }

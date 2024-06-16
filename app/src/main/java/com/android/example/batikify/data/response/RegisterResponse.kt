@@ -12,7 +12,7 @@ data class RegisterResponse(
 	@field:SerializedName("status")
 	val status: String? = null,
 
-	@field:SerializedName("error")
+	@field:SerializedName("errors")
 	val errors: List<ErrorResponse>? = null
 )
 

@@ -10,10 +10,12 @@
     tools:context=".screen.main.MainActivity">
 
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/nameInputLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Name"
-        android:layout_marginTop="16dp">
+        android:hint="@string/fullname"
+        android:layout_marginTop="16dp"
+        app:errorEnabled="true">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/nameEditText"
@@ -23,11 +25,13 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/emailInputLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:hint="Email"
-        app:endIconMode="clear_text">
+        android:hint="@string/email"
+        app:endIconMode="clear_text"
+        app:errorEnabled="true">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/emailEditText"
@@ -37,11 +41,13 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/passwordInputLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Password"
+        android:hint="@string/password"
         app:endIconMode="password_toggle"
-        android:layout_marginTop="16dp">
+        android:layout_marginTop="16dp"
+        app:errorEnabled="true">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/passwordEditText"
@@ -51,11 +57,13 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/passwordConfirmationInputLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Repeat Password"
+        android:hint="@string/password_confirmation"
         app:endIconMode="password_toggle"
-        android:layout_marginTop="16dp">
+        android:layout_marginTop="16dp"
+        app:errorEnabled="true">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/passwordConfirmationEditText"
@@ -68,7 +76,7 @@
         android:id="@+id/btnSignUp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Sign Up"
+        android:text="@string/sign_up"
         android:layout_marginTop="48dp"
         style="@style/Widget.Material3.Button" />
 
