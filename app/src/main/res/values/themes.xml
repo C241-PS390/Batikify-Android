@@ -1,5 +1,5 @@
 <resources >
-    <style name="Base.Theme.Batikify" parent="Theme.Material3.DayNight.NoActionBar">
+    <style name="Base.Theme.Batikify" parent="Theme.Material3.DayNight">
         <item name="colorPrimary">@color/primary</item>
         <item name="colorOnPrimary">@color/onPrimary</item>
         <item name="colorPrimaryContainer">@color/primaryContainer</item>

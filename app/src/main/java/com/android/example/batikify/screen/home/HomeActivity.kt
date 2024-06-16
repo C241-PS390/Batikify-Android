@@ -55,7 +55,7 @@ class HomeActivity: AppCompatActivity(){
         }
     }
 
-    private fun showHistoryList(historyList : List<DataItemHistory>) {
+    private fun showHistoryList(historyList: List<DataItemHistory>?) {
         val layoutManager = LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false)
         binding.rvHistory.layoutManager = layoutManager
 
@@ -64,15 +64,15 @@ class HomeActivity: AppCompatActivity(){
 
         historyAdapter.setOnItemClickListener(object : HistoryAdapter.OnItemClickListener {
             override fun onItemClick(position: Int) {
-                val history = historyList[position]
+                val history = historyList?.get(position)
                 val detailPage = Intent(this@HomeActivity, DetailActivity::class.java)
-                detailPage.putExtra("HISTORY_ID",history.id)
+                detailPage.putExtra("HISTORY_ID", history?.id)
                 startActivity(detailPage)
             }
         })
     }
 
-    private fun showArticleList(articleList : List<DataItemNews>) {
+    private fun showArticleList(articleList: List<DataItemNews>?) {
         val layoutManager = LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false)
         binding.rvNews.layoutManager = layoutManager
 
@@ -81,8 +81,8 @@ class HomeActivity: AppCompatActivity(){
 
         articleAdapter.setOnItemClickListener(object : ArticleCardAdapter.OnItemClickListener {
             override fun onItemClick(position: Int) {
-                val article = articleList[position]
-                val url = article.link
+                val article = articleList?.get(position)
+                val url = article?.link
                 val articleWeb = Intent(Intent.ACTION_VIEW)
                 articleWeb.setData(Uri.parse(url))
                 startActivity(articleWeb)

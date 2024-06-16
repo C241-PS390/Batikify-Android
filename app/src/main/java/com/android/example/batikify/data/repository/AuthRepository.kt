@@ -11,8 +11,9 @@ class AuthRepository(
     private val userPreference: UserPreference,
     private val authApiService: AuthApiService
 ) {
-
     private val TAG = "AuthRepo"
+
+    fun getSession() = userPreference.getSession()
 
     suspend fun saveSession(user: UserModel) {
         userPreference.saveSession(user)
