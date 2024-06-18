@@ -26,9 +26,9 @@ class ProfileViewModel(private val batikRepository: BatikRepository) : ViewModel
                 val response = batikRepository.getProfile()
                 _isLoading.value = false
                 if (response.status == "success") {
-                    val encyclopedia = response.data
-                    _email.value = encyclopedia?.email
-                    _fullName.value = encyclopedia?.fullName
+                    val profile = response.data
+                    _email.value = profile?.email
+                    _fullName.value = profile?.fullName
                 } else {
                     Log.e(TAG, "Error: ${response.message}")
                 }
@@ -43,7 +43,6 @@ class ProfileViewModel(private val batikRepository: BatikRepository) : ViewModel
             batikRepository.logout()
         }
     }
-
 
     companion object{
         private val TAG = "ProfileViewModel"

@@ -37,4 +37,5 @@
         <item name="background">@color/primaryContainer</item>
         <item name="titleTextColor">@color/primary</item>
     </style>
+
 </resources>
