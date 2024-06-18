@@ -2,6 +2,7 @@ package com.android.example.batikify.screen.splash
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
@@ -29,7 +30,8 @@ class SplashActivity : AppCompatActivity() {
         splashViewModel.getSession().observe(this) { userModel ->
             lifecycleScope.launch {
                 delay(splashScreenTimeDelay)
-                if (userModel != null) {
+
+                if (userModel.isLogin == true) {
                     navigateToHome()
                 } else {
                     navigateToMain()

@@ -17,7 +17,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Batikify"
+        android:theme="@style/Theme.Batikify.WithActionBar"
         tools:targetApi="31">
 
         <activity
@@ -37,7 +37,6 @@
         <activity android:name=".screen.history.HistoryActivity"/>
         <activity android:name=".screen.artikel.ArticleNews"/>
         <activity android:name=".screen.main.MainActivity"/>
-
     </application>
 
 </manifest>

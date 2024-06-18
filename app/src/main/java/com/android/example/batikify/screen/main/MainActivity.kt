@@ -12,6 +12,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        supportActionBar?.hide()
 
         val btnSignInShowBottomSheet = findViewById<MaterialButton>(R.id.btnSignIn)
         btnSignInShowBottomSheet.setOnClickListener {
