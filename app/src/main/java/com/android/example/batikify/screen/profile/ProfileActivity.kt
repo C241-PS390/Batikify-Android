@@ -30,11 +30,11 @@ class ProfileActivity : AppCompatActivity(){
 
     private fun setupAction(){
         profileViewModel.fullName.observe(this){ fullName ->
-            binding.username.hint = fullName
+            binding.username.text = fullName
         }
 
         profileViewModel.email.observe(this){ email ->
-            binding.email.hint = email
+            binding.email.text = email
         }
 
         profileViewModel.isLoading.observe(this){

@@ -30,6 +30,7 @@
     <style name="Theme.Batikify.WithActionBar" parent="Base.Theme.Batikify">
         <item name="windowActionBar">true</item>
         <item name="windowNoTitle">false</item>
+        <item name="colorPrimary">@color/primary</item>
     </style>
 
 </resources>

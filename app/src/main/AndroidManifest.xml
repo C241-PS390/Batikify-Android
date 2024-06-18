@@ -28,14 +28,20 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".screen.home.HomeActivity"/>
-        <activity android:name=".screen.classification.ClassificationActivity"/>
-        <activity android:name=".screen.ensiklopedia.EnsiklopediaActivity"/>
+        <activity android:name=".screen.home.HomeActivity"
+            android:label="Home Page"/>
+        <activity android:name=".screen.classification.ClassificationActivity"
+            android:label="Classification"/>
+        <activity android:name=".screen.ensiklopedia.EnsiklopediaActivity"
+            android:label="Ensiklopedia"/>
         <activity android:name=".screen.detail.DetailActivity"/>
-        <activity android:name=".screen.profile.ProfileActivity"/>
-        <activity android:name=".screen.classification.CameraActivity"/>
-        <activity android:name=".screen.history.HistoryActivity"/>
-        <activity android:name=".screen.artikel.ArticleNews"/>
+        <activity android:name=".screen.profile.ProfileActivity"
+            android:label="Profile"/>
+        <activity android:name=".screen.classification.CameraActivity" />
+        <activity android:name=".screen.history.HistoryActivity"
+            android:label="History"/>
+        <activity android:name=".screen.artikel.ArticleNews"
+            android:label="Articles"/>
         <activity android:name=".screen.main.MainActivity"/>
 
     </application>
