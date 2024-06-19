@@ -12,8 +12,20 @@
             android:id="@+id/main"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:theme="@style/Theme.Batikify.WithActionBar"
             tools:context=".screen.home.HomeActivity">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?attr/colorSecondaryContainer"
+                app:titleTextColor="@color/primary"
+                app:titleTextAppearance="@android:style/TextAppearance.DeviceDefault.Large.Inverse"
+                app:menu="@menu/option_menu"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:title="@string/home_page"/>
 
             <ImageButton
                 android:id="@+id/classificationButton"
@@ -22,7 +34,7 @@
                 android:src="@drawable/baseline_camera_enhance_24"
                 android:contentDescription="@string/cd_classificationButton"
                 android:layout_marginTop="28dp"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/toolbar"
                 app:layout_constraintEnd_toStartOf="@+id/ensyclopeidaButton"
                 app:layout_constraintStart_toStartOf="parent"
                 app:tint="@color/primary"
@@ -52,7 +64,7 @@
                 android:layout_marginTop="28dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/classificationButton"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
             <TextView
                 android:id="@+id/tvEncyclopedia"

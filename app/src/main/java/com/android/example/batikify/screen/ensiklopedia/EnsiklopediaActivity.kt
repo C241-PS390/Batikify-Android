@@ -5,7 +5,9 @@ import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.android.example.batikify.R
 import com.android.example.batikify.adapter.EncyclopediaAdapter
 
 import com.android.example.batikify.data.response.DataItemEncyclopedia
@@ -26,6 +28,8 @@ class EnsiklopediaActivity : AppCompatActivity(){
         super.onCreate(savedInstanceState)
         binding = ActivityEncyclopediaBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        val toolbar: Toolbar = findViewById(R.id.toolbar)
+        setSupportActionBar(toolbar)
 
         val layoutManager = LinearLayoutManager(this)
         binding.rvEncyclopedia.layoutManager = layoutManager

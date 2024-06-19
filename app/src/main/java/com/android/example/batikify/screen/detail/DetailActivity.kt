@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import com.android.example.batikify.R
 import com.android.example.batikify.databinding.ActivityDetailBatikBinding
 import com.android.example.batikify.factory.ViewModelFactory
@@ -21,6 +22,8 @@ class DetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityDetailBatikBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        val toolbar: Toolbar = findViewById(R.id.toolbar)
+        setSupportActionBar(toolbar)
 
         val id = intent.getStringExtra("BATIK_ID")
         val historyId = intent.getStringExtra("HISTORY_ID")

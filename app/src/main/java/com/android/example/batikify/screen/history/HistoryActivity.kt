@@ -5,7 +5,9 @@ import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.android.example.batikify.R
 import com.android.example.batikify.adapter.HistoryAdapter
 import com.android.example.batikify.data.response.DataItemHistory
 import com.android.example.batikify.databinding.ActivityHistoryBinding
@@ -25,6 +27,8 @@ class HistoryActivity:  AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityHistoryBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        val toolbar: Toolbar = findViewById(R.id.toolbar)
+        setSupportActionBar(toolbar)
 
         val layoutManager = LinearLayoutManager(this)
         binding.rvHistory.layoutManager = layoutManager

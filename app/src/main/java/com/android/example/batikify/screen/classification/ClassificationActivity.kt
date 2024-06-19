@@ -1,7 +1,6 @@
 package com.android.example.batikify.screen.classification
 
 import android.Manifest
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
@@ -15,6 +14,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.android.example.batikify.R
@@ -23,9 +23,7 @@ import com.android.example.batikify.factory.ViewModelFactory
 import com.android.example.batikify.screen.Camera.getImageUri
 import com.android.example.batikify.screen.Camera.reduceFileImage
 import com.android.example.batikify.screen.Camera.uriToFile
-import com.android.example.batikify.screen.detail.DetailActivity
 import com.android.example.batikify.screen.home.HomeActivity
-import com.android.example.batikify.screen.main.MainActivity
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.MultipartBody
 import okhttp3.RequestBody.Companion.asRequestBody
@@ -60,6 +58,8 @@ class ClassificationActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityClassificationBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        val toolbar: Toolbar = findViewById(R.id.toolbar)
+        setSupportActionBar(toolbar)
 
         if (!allPermissionsGranted()) {
             requestCameraPermission()

@@ -7,6 +7,18 @@
     android:layout_height="match_parent"
     tools:context=".screen.ensiklopedia.EnsiklopediaActivity">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorSecondaryContainer"
+        app:titleTextColor="@color/primary"
+        app:titleTextAppearance="@android:style/TextAppearance.DeviceDefault.Large.Inverse"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:title="@string/ensiklopedia"/>
+
     <com.google.android.material.search.SearchView
         android:id="@+id/searchView"
         android:layout_width="0dp"
@@ -27,7 +39,7 @@
         android:layout_marginHorizontal="16dp"
         app:layout_constraintEnd_toStartOf="@+id/searchView"
         app:layout_constraintStart_toEndOf="@+id/searchView"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
         android:orientation="horizontal">
 
         <com.google.android.material.search.SearchBar

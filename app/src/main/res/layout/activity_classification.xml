@@ -7,6 +7,18 @@
     android:layout_height="match_parent"
     tools:context=".screen.classification.ClassificationActivity">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorSecondaryContainer"
+        app:titleTextColor="@color/primary"
+        app:titleTextAppearance="@android:style/TextAppearance.DeviceDefault.Large.Inverse"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:title="@string/classification"/>
+
     <com.google.android.material.progressindicator.LinearProgressIndicator
         android:id="@+id/progressIndicator"
         android:layout_width="match_parent"
@@ -15,7 +27,7 @@
         android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/toolbar" />
     <ImageView
         android:id="@+id/previewImageView"
         android:layout_width="0dp"

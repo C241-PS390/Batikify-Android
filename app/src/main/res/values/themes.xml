@@ -23,19 +23,10 @@
         <item name="colorSurfaceVariant">@color/surfaceVariant</item>
         <item name="colorOnSurfaceVariant">@color/onSurfaceVariant</item>
         <item name="colorOutline">@color/outline</item>
+
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
     </style>
 
     <style name="Theme.Batikify" parent="Base.Theme.Batikify" />
-
-    <style name="Theme.Batikify.WithActionBar" parent="Base.Theme.Batikify">
-        <item name="windowActionBar">true</item>
-        <item name="windowNoTitle">false</item>
-        <item name="actionBarStyle">@style/ActionBarStyle</item>
-    </style>
-
-    <style name="ActionBarStyle" parent="Widget.Material3.Toolbar">
-        <item name="background">@color/primaryContainer</item>
-        <item name="titleTextColor">@color/primary</item>
-    </style>
-
 </resources>

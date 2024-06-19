@@ -30,7 +30,7 @@
     <string name="description_batik_sample">Batik Mega Mendung adalah jenis motif terkenal batik khas Indonesia. Penggambaran mega mendung menunjukkan akulturasi antar budaya dan ornamentasi Tiongkok. Motif Batik Mega Mendung berasal dari Cirebon, Jawa Barat. Yuk, ketahui lebih lanjut mengenai sejarah hingga filosofi jenis batik yang satu ini.</string>
     <string name="no_data_found">no data found</string>
     <string name="cd_classificationButton">klasifikasi motif batik</string>
-    <string name="classification">classification</string>
+    <string name="classification">Classification</string>
     <string name="cd_ensyclopediaButton">klasifikasi motif batik</string>
     <string name="encyclopedia">Encyclopedia</string>
     <string name="history">History</string>
@@ -52,4 +52,8 @@
     <string name="asal">"asal "</string>
     <string name="logo">logo</string>
     <string name="switch_camera"><![CDATA[ubah kamera/> </androidx.constraintlayout.widget.ConstraintLayout>]]></string>
+    <string name="home_page">Home Page</string>
+    <string name="ensiklopedia">Ensiklopedia</string>
+    <string name="profile">Profile</string>
+    <string name="articles">Articles</string>
 </resources>
