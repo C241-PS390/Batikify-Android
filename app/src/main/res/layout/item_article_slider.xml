@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="200dp"
-    android:layout_height="wrap_content"
+    android:layout_height="286dp"
     android:layout_margin="16dp"
     android:backgroundTint="@color/background">
 
@@ -26,8 +26,8 @@
             android:id="@+id/tvArticleTitle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:paddingStart="16dp"
-            android:text="Alat dan Bahan untuk Membuat Batik "
+            android:paddingHorizontal="12dp"
+            android:text="@string/title_article_sample"
             android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
@@ -36,13 +36,13 @@
 
         <androidx.constraintlayout.utils.widget.MotionLabel
             android:id="@+id/tvDate"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:background="@drawable/label_round"
-            android:paddingHorizontal="8dp"
+            android:layout_marginHorizontal="12dp"
+            android:paddingHorizontal="16dp"
             android:paddingVertical="2dp"
-            android:layout_marginStart="16dp"
-            android:text="27 Mei 2024"
+            android:text="@string/date_article_sample"
             android:textSize="12sp"
             android:textStyle="bold"
             android:textColor="@color/primary"
@@ -52,14 +52,14 @@
 
         <androidx.constraintlayout.utils.widget.MotionLabel
             android:id="@+id/tvSource"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:background="@drawable/label_round"
-            android:paddingHorizontal="8dp"
+            android:layout_marginHorizontal="12dp"
+            android:paddingHorizontal="16dp"
             android:paddingVertical="2dp"
-            android:layout_marginStart="16dp"
             android:layout_marginTop="2dp"
-            android:text="Kumparan.com"
+            android:text="@string/source_article_sample"
             android:textSize="12sp"
             android:textStyle="bold"
             android:textColor="@color/primary"
@@ -73,26 +73,12 @@
             android:layout_height="wrap_content"
             android:textSize="12sp"
             android:maxLines="2"
-            android:text="Menentukan zat pelarut dan zat terlarut pada larutan pewarna batik memiliki kelebihan dan dapat berguna untuk tahap  "
-            android:paddingHorizontal="16dp"
+            android:text="@string/description_article_sample"
+            android:paddingHorizontal="12dp"
             android:paddingBottom="12dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvSource" />
-
-        <TextView
-            android:id="@+id/tvReadMore"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:background="@color/onPrimary"
-            android:textStyle="bold"
-            android:textSize="10sp"
-            android:visibility="visible"
-            android:text="... Read More"
-            android:layout_marginBottom="12dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="@+id/tvArticleDescription" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>

@@ -26,7 +26,7 @@
 
         <TextView
             android:id="@+id/tvEncyclopediaTitle"
-            android:layout_width="240dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:paddingVertical="4dp"
             android:paddingStart="16dp"
@@ -35,37 +35,35 @@
             android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toTopOf="@+id/tvEncyclopediaDescription"
             app:layout_constraintTop_toBottomOf="@+id/ivBatikImage" />
 
         <androidx.constraintlayout.utils.widget.MotionLabel
             android:id="@+id/tvBatikComeFrom"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="4dp"
+            android:layout_marginStart="16dp"
             android:background="@drawable/outline_label"
             android:paddingHorizontal="8dp"
             android:paddingVertical="4dp"
             android:text="@string/origin_sample"
             android:textSize="14sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/tvEncyclopediaTitle"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/tvEncyclopediaTitle"
-            app:layout_constraintTop_toBottomOf="@+id/ivBatikImage" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvEncyclopediaTitle" />
 
         <TextView
             android:id="@+id/tvEncyclopediaDescription"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:textSize="12sp"
             android:maxLines="2"
             android:text="@string/description_batik_sample"
             android:paddingHorizontal="16dp"
+            android:paddingTop="8dp"
             android:paddingBottom="12dp"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvEncyclopediaTitle" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvBatikComeFrom" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>

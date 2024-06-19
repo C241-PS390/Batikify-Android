@@ -49,7 +49,7 @@ class DetailActivity : AppCompatActivity() {
         }
 
         detailViewModel.origin.observe(this){origin ->
-            val asal = "asal "
+            val asal = "Asal "
             binding.tvDetailOrigin.text = asal + origin
         }
 
