@@ -66,7 +66,7 @@ class ModalSignUpBottomSheet : BottomSheetDialogFragment() {
 
     private fun handleStatusResponse(statusResponse: String) {
         signUpViewModel.message.observe(viewLifecycleOwner) { message ->
-            if (statusResponse == getString(R.string.success)) {
+            if (statusResponse == getString(R.string.success) && message != "Validation error") {
                 showAlertDialog(getString(R.string.yeah), message, getString(R.string.next)) {
                     dismiss()
                 }

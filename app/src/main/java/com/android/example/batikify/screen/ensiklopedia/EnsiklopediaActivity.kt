@@ -1,7 +1,6 @@
 package com.android.example.batikify.screen.ensiklopedia
 
 import android.content.Intent
-import android.graphics.Color
 import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
@@ -10,12 +9,10 @@ import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.android.example.batikify.R
 import com.android.example.batikify.adapter.EncyclopediaAdapter
-
 import com.android.example.batikify.data.response.DataItemEncyclopedia
 import com.android.example.batikify.databinding.ActivityEncyclopediaBinding
 import com.android.example.batikify.factory.ViewModelFactory
 import com.android.example.batikify.screen.detail.DetailActivity
-import com.google.android.material.search.SearchBar
 
 class EnsiklopediaActivity : AppCompatActivity(){
 

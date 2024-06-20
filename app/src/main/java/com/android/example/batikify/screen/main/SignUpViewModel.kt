@@ -30,11 +30,12 @@ class SignUpViewModel(private val repository: AuthRepository) : ViewModel() {
             try {
                 val response = repository.register(fullName, email, password, passwordConfirm)
                 _status.value = response.status
-                _message.value = response.message
 
                 if (response.status == "success") {
+                    _message.value = response.message
                     _errors.value = emptyList()
                 } else {
+                    _message.value = response.message
                     _errors.value = response.errors ?: emptyList()
                 }
             } catch (e: Exception) {

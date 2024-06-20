@@ -58,9 +58,9 @@ class DetailActivity : AppCompatActivity() {
             binding.tvDescriptionBatik.text = description
         }
 
-        detailViewModel.imageUrl.observe(this){imageUrl ->
+        detailViewModel.imageUrl.observe(this){photoUrl ->
             Glide.with(this)
-                .load(imageUrl)
+                .load(photoUrl)
                 .error(R.drawable.baseline_error_24)
                 .into(binding.ivImageBatik)
         }

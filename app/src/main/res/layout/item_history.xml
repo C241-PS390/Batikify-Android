@@ -16,15 +16,15 @@
             android:layout_width="match_parent"
             android:layout_height="150dp"
             android:scaleType="fitXY"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/sample_batik"
             android:contentDescription="@string/cd_ivImageBatik"/>
 
         <TextView
             android:id="@+id/tvHistoryTitle"
-            android:layout_width="0dp"
+            android:layout_width="240dp"
             android:layout_height="wrap_content"
             android:paddingVertical="4dp"
             android:paddingStart="16dp"
@@ -32,36 +32,36 @@
             android:text="@string/name_motif_sample"
             android:textSize="16sp"
             android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/tvHistoryOrigin"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ivHistoryImage"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/ivHistoryImage" />
 
         <TextView
             android:id="@+id/tvHistoryOrigin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
+            android:layout_marginHorizontal="16dp"
             android:background="@drawable/outline_label"
             android:paddingHorizontal="8dp"
             android:paddingVertical="4dp"
             android:text="@string/origin_sample"
             android:textSize="14sp"
             android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/tvHistoryDescription"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvHistoryTitle" />
+            app:layout_constraintTop_toBottomOf="@+id/tvHistoryTitle"  />
 
         <TextView
             android:id="@+id/tvHistoryDescription"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="12sp"
             android:maxLines="2"
             android:text="@string/description_batik_sample"
             android:paddingHorizontal="16dp"
-            android:paddingTop="8dp"
             android:paddingBottom="12dp"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvHistoryOrigin" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -21,7 +21,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:title="@string/history" />
+            app:title="@string/batik_detail" />
 
         <ProgressBar
             android:id="@+id/progressBar"
